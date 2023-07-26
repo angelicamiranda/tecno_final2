@@ -26,9 +26,9 @@
         
               <tr>
                 <th scope="col">ID</th>
+                <th scope="col">CI</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Email</th>
-                <th scope="col">Rol</th>
+                <th scope="col">Cargo</th>
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
@@ -37,9 +37,10 @@
               @foreach ($users as $user)
                 <tr>
                   <td>{{$user->id}}</td>
-                  <td>{{$user->name}}</td>
-                  <td>{{$user->email}}</td>
-                  <td>{{$user->rol_name()}}</td>
+                  <td>{{$user->ci}}</td>
+                  <td>{{$user->nombre}}</td>
+                  <td>{{$user->cargo}}</td>
+                  {{-- <td>{{$user->rol_name()}}</td> --}}
                   <td>
                     <form action="{{route('users.destroy', $user)}}" method="post">
                       @csrf

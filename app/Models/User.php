@@ -8,11 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Traits\HasRoles;
+//use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable;
     /**
      * The attributes that are mass assignable.
      *
@@ -20,8 +20,6 @@ class User extends Authenticatable
      */
     protected $table = 'usuario'; //usa el nombre de la base de datos
     protected $fillable = [
-
-
         'ci',
         'nombre',
         'cargo',
@@ -30,6 +28,8 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for serialization.
@@ -57,19 +57,20 @@ class User extends Authenticatable
     //     return "SIN ROL";
     // }
 
-    // public function rol_id() {
-    //     $rol = DB::table('p2_roles')
-    //     ->join('p2_model_has_roles', 'role_id', '=', 'p2_roles.id')
-    //     ->join('users', 'users.id', '=', 'p2_model_has_roles.model_id')
-    //     ->where('users.id', '=', $this->id)
-    //     ->select('p2_roles.id')
-    //     ->get()
-    //     ->first();
-    //     return $rol->id;
-    // }
-    // public function rol(){
-    //     return $this->belongsTo('App\Models\Rol','rol_id','id');
-    // }
+    public function rol_id() {
+        $rol = DB::table('p2_roles')
+        ->join('p2_model_has_roles', 'role_id', '=', 'p2_roles.id')
+        ->join('users', 'users.id', '=', 'p2_model_has_roles.model_id')
+        ->where('users.id', '=', $this->id)
+        ->select('p2_roles.id')
+        ->get()
+        ->first();
+        return $rol->id;
+    }
+
+    public function rol(){
+        return $this->belongsTo('App\Models\Rol','rol_id','id');
+    }
 
     public function cliente()
     {
