@@ -1,3 +1,4 @@
+
 @extends('plantilla.app')
 
 @section('title', 'Usuarios')
@@ -7,9 +8,9 @@
 @stop
 
 @section('content')
-    @can('users.create')
+
         <a href="{{ route('users.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Usuario</a>
-    @endcan
+
 
     @if (session('error'))
         <div class="alert alert-danger">
@@ -34,29 +35,29 @@
             </thead>
 
              <tbody>
-              @foreach ($users as $user)
-                <tr>
-                  <td>{{$user->id}}</td>
-                  <td>{{$user->ci}}</td>
-                  <td>{{$user->nombre}}</td>
-                  <td>{{$user->cargo}}</td>
-                  {{-- <td>{{$user->rol_name()}}</td> --}}
-                  <td>
-                    <form action="{{route('users.destroy', $user)}}" method="post">
-                      @csrf
-                      @method('delete')
-                       {{-- <a class="btn btn-primary btn-sm" href="{{route('users.show',$user)}}">Ver</a> --}}
+                @foreach ($users as $user)
+                  <tr>
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->ci}}</td>
+                    <td>{{$user->nombre}}</td>
+                    <td>{{$user->cargo}}</td>
+                    {{-- <td>{{$user->rol_name()}}</td> --}}
+                    <td>
+                      <form action="{{route('users.destroy', $user)}}" method="post">
+                        @csrf
+                        @method('delete')
+                        {{-- <a class="btn btn-primary btn-sm" href="{{route('users.show',$user)}}">Ver</a> --}}
 
-                      <a href="{{route('users.edit',$user)}}" class="btn btn-info btn-sm">Editar</a>
+                          <a href="{{route('users.edit',$user)}}" class="btn btn-info btn-sm">Editar</a>
 
-                      <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
-                      value="Borrar">Eliminar</button>
-                    </form>
-                  </td>
-                </tr>
-               @endforeach
+                          <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
+                          value="Borrar">Eliminar</button>
+                      </form>
+                    </td>
+                  </tr>
+                @endforeach
 
-            </tbody>
+              </tbody>
 
           </table>
         </div>

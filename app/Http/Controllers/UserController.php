@@ -36,23 +36,19 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required',
-            'ci' => 'required|unique:usuario',
-            'cargo' => 'required',
+            'ci' => 'numeric|unique:usuario',
             'email' => 'required|email|unique:usuario',
             'password' => 'required|string|min:4',
         ]);
         $users=User::create([
-            'nombre' => $request['nombre'],
+            'nombre' => $request['name'],
             'ci' => $request['ci'],
             'cargo' => $request['cargo'],
             'email' => $request['email'],
             'rol_id' => $request['rol_id'],
             'password' => Hash::make($request['password']),
         ]);
-
-         $users->save();
-
+        $users->save();
 
         return redirect()->route('users.index');
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PagoServicio;
+use App\Models\Servicio;
 use Illuminate\Http\Request;
 
 class PagoServicioController extends Controller
@@ -21,7 +22,8 @@ class PagoServicioController extends Controller
      */
     public function create()
     {
-        //
+        $servicios = Servicio::get();
+        return view('pagoServicio.create',compact('servicios'));
     }
 
     /**
@@ -43,9 +45,10 @@ class PagoServicioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(PagoServicio $pago)
     {
-        //
+        $servicios = Servicio::get();
+        return view('pagoServicio.edit',compact('pago', 'servicios'));
     }
 
     /**
