@@ -42,7 +42,57 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="{{route('cliente.index')}}">
                         <i class="bi bi-person"></i>
-                        <span>Asistencias</span>
+                        <span>Cuentas de Ahorro</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="{{route('cliente.index')}}">
+                        <i class="bi bi-person"></i>
+                        <span>Transacciones</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+        <li class="nav-item collapsed">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Crédito</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="{{route('cliente.index')}}">
+                        <i class="bi bi-person"></i>
+                        <span>Créditos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="{{route('cliente.index')}}">
+                        <i class="bi bi-person"></i>
+                        <span>Tasa de Interés</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+        <li class="nav-item collapsed">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Servicios Básicos</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="{{route('cliente.index')}}">
+                        <i class="bi bi-person"></i>
+                        <span>Sevicios Disponibles</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="{{route('cliente.index')}}">
+                        <i class="bi bi-person"></i>
+                        <span>Pagos de Servicios</span>
                     </a>
                 </li>
 
@@ -52,11 +102,10 @@
 
 
 
-
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{route('cliente.index')}}">
                 <i class="bi bi-person"></i>
-                <span>Asistencias</span>
+                <span>Reportes</span>
             </a>
         </li>
         {{-- <a id="dark-mode" class="nav-link collapsed">

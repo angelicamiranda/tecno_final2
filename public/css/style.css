@@ -46,7 +46,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Nunito", sans-serif;
+  font-family: "Opens Sans", sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -75,7 +75,7 @@ h6 {
   font-size: 24px;
   margin-bottom: 0;
   font-weight: 600;
-  color: #012970;
+  color: #9A7D0A;
 }
 
 /*--------------------------------------------------------------
@@ -1261,12 +1261,12 @@ h6 {
 
 .footer .copyright {
   text-align: center;
-  color: #012970;
+  color: #145A32;
 }
 
 .footer .credits {
   padding-top: 5px;
   text-align: center;
   font-size: 13px;
-  color: #012970;
+  color: #145A32;
 }
