@@ -13,7 +13,7 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive my-3">
-                <table class="table table-striped" id="usuarios">
+                <table class="table table-striped" >
 
                     <thead>
 
@@ -74,9 +74,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap5.min.js"></script>
-    <script>
+    {{--  <script>
         $(document).ready(function() {
             $('#usuarios').DataTable();
         });
-    </script>
+    </script>  --}}
 @stop

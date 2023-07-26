@@ -27,32 +27,33 @@ Route::get('/plantilla', function () {
     return view('plantilla.app');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-    Route::group(['prefix'=> 'usuarios'], function () {
-        Route::get('profile',[UserController::class,'show2'])->name('user.show');
-        Route::patch('update',[UserController::class,'update2'])->name('user.update');
-        Route::resource('users', UserController::class)->names('users');
-        Route::resource('roles', RoleController::class)->names('roles');
-    });
-
-    Route::resource('personal', PersonalController::class)->names('personal');
-    Route::resource('horarios', HorarioController::class)->names('horarios');
-    Route::resource('archivos', ArchivoController::class)->names('archivos');
-    Route::resource('certificados', CertificadoController::class)->names('certificados');
-
-});
-
-Route::group(['prefix'=> 'asistencias'], function () {
-    Route::get('index',[AsistenciaController::class,'index'])->name('asistencias.index');
-    Route::get('marcar/{id}',[AsistenciaController::class,'marcar'])->name('asistencias.marcar');
-});
-
-Route::get('certificado/verificar/{codigo}',[CertificadoController::class,'verificar'])->name('certificados.verificar');
-Route::get('certificado/download/{certificado}',[CertificadoController::class,'download'])->name('certificados.download');
-
-
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/cliente/index', [ClienteController::class, 'index'])->name('cliente.index');
+
+
+// Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+//   Route::group(['prefix'=> 'usuarios'], function () {
+//         Route::get('profile',[UserController::class,'show2'])->name('user.show');
+//         Route::patch('update',[UserController::class,'update2'])->name('user.update');
+//         Route::resource('users', UserController::class)->names('users');
+//         Route::resource('roles', RoleController::class)->names('roles');
+//     });
+
+//     Route::resource('personal', PersonalController::class)->names('personal');
+//     Route::resource('horarios', HorarioController::class)->names('horarios');
+//     Route::resource('archivos', ArchivoController::class)->names('archivos');
+//     Route::resource('certificados', CertificadoController::class)->names('certificados');
+
+// });
+
+// Route::group(['prefix'=> 'asistencias'], function () {
+//     Route::get('index',[AsistenciaController::class,'index'])->name('asistencias.index');
+//     Route::get('marcar/{id}',[AsistenciaController::class,'marcar'])->name('asistencias.marcar');
+// });
+
+// Route::get('certificado/verificar/{codigo}',[CertificadoController::class,'verificar'])->name('certificados.verificar');
+// Route::get('certificado/download/{certificado}',[CertificadoController::class,'download'])->name('certificados.download');
+
+
 
 

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  
+
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -31,7 +31,7 @@
     <link href="{{ asset('vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-     <link href="{{ asset('css/style.css') }}" rel="stylesheet" id="stylesheet"> 
+     <link href="{{ asset('css/style.css') }}" rel="stylesheet" id="stylesheet">
     @yield('css')
     <script>
         let stylesheet = document.getElementById("stylesheet");
@@ -52,8 +52,7 @@
 
             <div class="d-flex align-items-center justify-content-between">
                 <a href="index.html" class="logo d-flex align-items-center">
-                    <img src="{{ asset('img/logo.png') }}" alt="">
-                    <span class="d-none d-lg-block">Camiri</span>
+                    <img src="{{ asset('img/logo.png') }}" alt="" width="60%" height="auto">
                 </a>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </div><!-- End Logo -->
@@ -107,9 +106,9 @@
         document.getElementById('joven-mode').addEventListener('click', jovenMode);
         document.getElementById('nino-mode').addEventListener('click', ninomode);
         document.getElementById('normal-mode').addEventListener('click', normal);
-       
+
         function changeVariable() {
-            
+
             localStorage.filecss= "{{ asset('css/styleBlack.css') }}" ;
             window.location.reload();
         }
@@ -131,8 +130,8 @@
         }
          //window.onload= cargarSty;
          //window.addEventListener('load',cargarSty);
-        
-        
+
+
 
 
         // let filecss= "{{ asset('css/style.css') }}";
@@ -147,9 +146,9 @@
         // window.onload= cargarSty;
         // window.addEventListener('load',cargarSty);
         // function cargarSty(){
-            
-            
-        //     head.appendChild(link); 
+
+
+        //     head.appendChild(link);
         //     if (localStorage.boolean==1 && localStorage.boolBlack==0){
         //         //let stylesheet = document.getElementById("stylesheet");
         //         console.log("llega");
@@ -191,9 +190,9 @@
         //          localStorage.boolJo=0;
         //         localStorage.boolAd=0;
         //     }
-        //     head.appendChild(link); 
+        //     head.appendChild(link);
         // }
-    </script> 
+    </script>
 
 
     {{-- <script>
@@ -204,7 +203,7 @@
      link.rel = "stylesheet";
     link.type = "text/css";
     link.href = "{{ asset('css/styleBlack.css') }}";
-    head.appendChild(link); 
+    head.appendChild(link);
     }
     </script> --}}
 </body>

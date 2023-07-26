@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
+//use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -27,8 +27,8 @@ class UserController extends Controller
 
     public function create()
     {
-        $roles = Role::all();
-        return view('users.create', compact('roles'));
+
+        return view('users.create');
     }
 
 
@@ -45,11 +45,9 @@ class UserController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        
-        if($request->roles > 0){
-            $users->roles()->sync($request->roles);
-            $users->save();
-        }
+
+         $users->save();
+
 
         return redirect()->route('users.index');
     }
@@ -89,8 +87,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        $roles = Role::where('id','<>',$user->rol_id())->get();
-        return view('users.edit',compact('user', 'roles') );
+
+        return view('users.edit',compact('user') );
     }
 
     public function update(Request $request, User $user)
@@ -109,8 +107,8 @@ class UserController extends Controller
         }
         if($request->roles > 0 ){
             $user->roles()->sync($request->roles);
-        }           
-        $user->save(); 
+        }
+        $user->save();
         return redirect()->route('users.edit', $user)->with('info', 'se actualizo el usuario correctamente');
     }
 
