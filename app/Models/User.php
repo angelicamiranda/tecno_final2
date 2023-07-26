@@ -67,9 +67,9 @@ class User extends Authenticatable
     //     ->first();
     //     return $rol->id;
     // }
-    public function rol(){
-        return $this->belongsTo('App\Models\Rol','rol_id','id');
-    }
+    // public function rol(){
+    //     return $this->belongsTo('App\Models\Rol','rol_id','id');
+    // }
 
     public function cliente()
     {
