@@ -49,7 +49,7 @@ class User extends Authenticatable
         }
         return "SIN ROL";
     }
-    
+
     public function rol_id() {
         $rol = DB::table('p2_roles')
         ->join('p2_model_has_roles', 'role_id', '=', 'p2_roles.id')
@@ -60,6 +60,13 @@ class User extends Authenticatable
         ->first();
         return $rol->id;
     }
+    public function rol(){
+        return $this->belongsTo('App\Models\Rol','rol_id','id');
+    }
 
-   
+    public function cliente()
+    {
+        return $this->hasMany('App\Models\Cliente','usuario_id','id');
+    }
+
 }
