@@ -56,6 +56,6 @@ Route::get('certificado/verificar/{codigo}',[CertificadoController::class,'verif
 Route::get('certificado/download/{certificado}',[CertificadoController::class,'download'])->name('certificados.download');
 
 
-
+//Route::get('/usuario/index', [App\Http\Controllers\UsuarioController::class, 'index'])->name('usuario.index');
 
 
