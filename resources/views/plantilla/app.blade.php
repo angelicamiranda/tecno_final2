@@ -50,9 +50,10 @@
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
 
-            <div class="d-flex align-items-center justify-content-between">
-                <a href="index.html" class="logo d-flex align-items-center">
-                    <img src="{{ asset('img/logo.png') }}" alt="" width="60%" height="100">
+            <div class="d-flex align-items-center justify-content-center">
+                <a href="index.html" class="logo d-flex align-content-center">
+
+                    <img src="{{ asset('img/logo.png') }}"  alt="" width="150" class="justify-content-center">
                 </a>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </div><!-- End Logo -->

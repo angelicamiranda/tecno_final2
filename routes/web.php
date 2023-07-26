@@ -10,6 +10,10 @@ use App\Http\Controllers\CertificadoController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CuentaAhorroController;
+use App\Http\Controllers\PagoServicioController;
+use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\TransaccionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +32,12 @@ Route::get('/plantilla', function () {
 });
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/cliente/index', [ClienteController::class, 'index'])->name('cliente.index');
+Route::resource('cliente', ClienteController::class)->names('cliente');
 Route::resource('users', UserController::class)->names('users');
-
+Route::resource('servicio', ServicioController::class)->names('servicio');
+Route::resource('pagoServicio', PagoServicioController::class)->names('pagoServicio');
+Route::resource('cuentaAhorro', CuentaAhorroController::class)->names('cuentaAhorro');
+Route::resource('transaccion', TransaccionController::class)->names('transaccion');
 
 // Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 //   Route::group(['prefix'=> 'usuarios'], function () {

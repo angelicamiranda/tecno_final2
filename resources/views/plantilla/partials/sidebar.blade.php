@@ -40,13 +40,13 @@
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="{{route('cliente.index')}}">
+                    <a class="nav-link collapsed" href="{{route('cuentaAhorro.index')}}">
                         <i class="bi bi-person"></i>
                         <span>Cuentas de Ahorro</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="{{route('cliente.index')}}">
+                    <a class="nav-link collapsed" href="{{route('transaccion.index')}}">
                         <i class="bi bi-person"></i>
                         <span>Transacciones</span>
                     </a>
@@ -84,13 +84,13 @@
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="{{route('cliente.index')}}">
+                    <a class="nav-link collapsed" href="{{route('servicio.index')}}">
                         <i class="bi bi-person"></i>
                         <span>Sevicios Disponibles</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="{{route('cliente.index')}}">
+                    <a class="nav-link collapsed" href="{{route('pagoServicio.index')}}">
                         <i class="bi bi-person"></i>
                         <span>Pagos de Servicios</span>
                     </a>
@@ -112,11 +112,18 @@
              <i class="fa-solid fa-moon-over-sun"></i> </a> --}}
 
     <li class="nav-heading">
-        <button id="adulto-mode" > Adulto</button>
+        <button style="padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 8px;
+        color: #0a560d;
+        background-color: #ffc107; " id="adulto-mode" > Adulto</button>
         <button id="joven-mode" >Joven</button>
         <button id="nino-mode" >Niño</button>
-        <button id="normal-mode" >Normal</button>
-        <button id="dark-mode" ><i class="bi bi-moon"> </i></button>
+        <button id="normal-mode"  style=" color: #fffff;
+        background-color: #ffc107;" ><i class="bi bi-sun"> </i> </button>
+        <button id="dark-mode"><i class="bi bi-moon"> </i></button>
 
     </li>
     </ul>

@@ -18,7 +18,7 @@ class PagoServicio extends Model
         'servicio_id'
     ];
     public function usuario(){
-        return $this->belongsTo('App\Models\Usuario','usuario_id','id');
+        return $this->belongsTo('App\Models\User','usuario_id','id');
     }
     public function servicio(){
         return $this->belongsTo('App\Models\Servicio','servicio_id','id');
