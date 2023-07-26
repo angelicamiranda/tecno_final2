@@ -21,9 +21,9 @@
         <div class="card-body">
           <div class="table-responsive">
           <table class="table" id="usuarios" >
-        
+
             <thead>
-        
+
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">CI</th>
@@ -32,7 +32,7 @@
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
-        
+
              <tbody>
               @foreach ($users as $user)
                 <tr>
@@ -46,18 +46,18 @@
                       @csrf
                       @method('delete')
                        {{-- <a class="btn btn-primary btn-sm" href="{{route('users.show',$user)}}">Ver</a> --}}
-                        
+
                       <a href="{{route('users.edit',$user)}}" class="btn btn-info btn-sm">Editar</a>
-        
-                      <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')" 
-                      value="Borrar">Eliminar</button> 
-                    </form>  
+
+                      <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
+                      value="Borrar">Eliminar</button>
+                    </form>
                   </td>
                 </tr>
                @endforeach
-        
-            </tbody> 
-        
+
+            </tbody>
+
           </table>
         </div>
     </div>

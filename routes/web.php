@@ -29,9 +29,7 @@ Route::get('/plantilla', function () {
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/cliente/index', [ClienteController::class, 'index'])->name('cliente.index');
-Route::get('/usuario/index', [UserController::class, 'index'])->name('user.index');
 Route::resource('users', UserController::class)->names('users');
-
 
 // Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 //   Route::group(['prefix'=> 'usuarios'], function () {

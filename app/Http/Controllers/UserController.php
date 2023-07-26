@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rol;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -27,22 +28,26 @@ class UserController extends Controller
 
     public function create()
     {
-
-        return view('users.create');
+        $roles = Rol::get();
+        return view('users.create',compact('roles'));
     }
 
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
+            'nombre' => 'required',
+            'ci' => 'required|unique:usuario',
+            'cargo' => 'required',
+            'email' => 'required|email|unique:usuario',
             'password' => 'required|string|min:4',
-            'roles' => 'required',
         ]);
         $users=User::create([
-            'name' => $request['name'],
+            'nombre' => $request['nombre'],
+            'ci' => $request['ci'],
+            'cargo' => $request['cargo'],
             'email' => $request['email'],
+            'rol_id' => $request['rol_id'],
             'password' => Hash::make($request['password']),
         ]);
 
@@ -87,8 +92,8 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-
-        return view('users.edit',compact('user') );
+        $roles = Rol::get();
+        return view('users.edit',compact('user', 'roles'));
     }
 
     public function update(Request $request, User $user)
@@ -97,11 +102,10 @@ class UserController extends Controller
             $user->nombre = $request->nombre;
         }
 
-        $request->validate([
-            'ci' => 'required|string|max:20|ci|unique:users',
-        ]);
-
         if($user->ci <> $request->ci){
+            $request->validate([
+                'ci' => 'required|numeric|unique:usuario',
+            ]);
             $user->ci = $request->ci;
         }
         if($user->cargo <> $request->cargo){
@@ -109,7 +113,7 @@ class UserController extends Controller
         }
         if($user->email <> $request->email){
             $request->validate([
-                'email'=>'required|string|max:255|email|unique:users',
+                'email'=>'required|email|max:255|email|unique:usuario',
             ]);
             $user->email = $request->email;
         }
@@ -117,9 +121,9 @@ class UserController extends Controller
             $user->password = bcrypt($request->password);
         }
         
-        // if($request->roles > 0 ){
-        //     $user->roles()->sync($request->roles);
-        // }
+        if($user->rol_id <> $request->rol_id ){
+            $user->rol_id = $request->rol_id;
+        }
         $user->save();
         return redirect()->route('users.edit', $user)->with('info', 'se actualizo el usuario correctamente');
     }

@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="form-group col-md-6 my-3">
-                    <label for="nombre"><b>Carnet del usuario</b></label>
+                    <label for="ci"><b>Carnet del usuario</b></label>
                     <input name="ci" type="text" class="form-control" value="{{ old('ci', $user->ci) }}"
                         id="ci">
                     @error('ci')
@@ -75,15 +75,18 @@
                     @enderror
                 </div>
 
-                {{-- <div class="form-group col-md-6 my-3">
+                <div class="form-group col-md-6 my-3">
                     <label for="name"><b>Seleccione un Rol</b></label>
-                    <select name="roles" class="form-control col-md-6" id="select-roles">
-                        <option value="{{ $user->rol_id() }}">{{ $user->rol_name() }}</option>
-                        @foreach ($roles as $role)
-                            <option value="{{ $role->id }}">{{ $role->name }}</option>
-                        @endforeach
+                    <select name="rol_id" class="form-control col-md-6" id="rol_id">
+                        @foreach ($roles as $rol)
+                        @if ($user->rol_id == $rol->id)
+                            <option class="text-dark" selected value="{{$rol->id}}">{{$rol->nombre}}</option>
+                        @else
+                            <option class="text-dark" value="{{$rol->id}}">{{$rol->nombre}}</option>
+                        @endif
+                    @endforeach
                     </select>
-                </div> --}}
+                </div>
 
                 <button type="submit" class="btn btn-primary mt-2">Actualizar Usuario</button>
                 <a href="{{ route('users.index') }}"class="btn btn-warning mt-2">Volver</a>

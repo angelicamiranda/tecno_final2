@@ -32,6 +32,34 @@
                             </div>
 
                             <div class="form-group row my-3">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('CI') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="ci" type="text" class="form-control @error('ci') is-invalid @enderror" name="ci" value="{{ old('ci') }}" required autocomplete="ci" autofocus>
+
+                                    @error('ci')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row my-3">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Cargo') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="cargo" type="text" class="form-control @error('cargo') is-invalid @enderror" name="cargo" value="{{ old('cargo') }}" required autocomplete="cargo" autofocus>
+
+                                    @error('cargo')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row my-3">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                                 <div class="col-md-6">
@@ -69,10 +97,10 @@
                             
 
                             <div class="form-group row my-3">
-                                <label for="roles" class="col-md-4 col-form-label text-md-right">{{ __('Seleccione Rol') }}</label>
+                                <label for="rol_id" class="col-md-4 col-form-label text-md-right">{{ __('Seleccione Rol') }}</label>
                                 
                                 <div class="col-md-6">
-                                    <select name="roles" class="form-control" id="select-roles" >
+                                    <select name="rol_id" class="form-control" id="rol_id" >
                                             @foreach ($roles as $rol)
                                                 <option value="{{ $rol->id }}">{{ $rol->name}}</option>
                                             @endforeach 

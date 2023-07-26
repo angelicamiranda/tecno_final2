@@ -52,7 +52,7 @@
 
             <div class="d-flex align-items-center justify-content-between">
                 <a href="index.html" class="logo d-flex align-items-center">
-                    <img src="{{ asset('img/logo.png') }}" alt="" width="60%" height="auto">
+                    <img src="{{ asset('img/logo.png') }}" alt="" width="60%" height="100">
                 </a>
                 <i class="bi bi-list toggle-sidebar-btn"></i>
             </div><!-- End Logo -->
