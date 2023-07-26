@@ -1,29 +1,29 @@
 @extends('plantilla.app')
 
-@section('title', 'Archivos')
+@section('title', 'Clientes')
 
 @section('content_header')
-    <h1>Archivos</h1>
+    <h1>Clientes</h1>
 @stop
 
 @section('content')
-    @can('cliente.create')
-        <a href="{{ route('cliente.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Cliente</a>
+    @can('archivos.create')
+        <a href="{{ route('archivos.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Cliente</a>
     @endcan
     <div class="card">
         <div class="card-body">
             <div class="table-responsive my-3">
-                <table class="table table-striped" id="clientes">
+                <table class="table table-striped" id="usuarios">
 
                     <thead>
 
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Descripcion</th>
-                            <th scope="col">Registrado</th>
-                            <th scope="col">Link</th>
-                            <th scope="col">Personal</th>
+                            <th scope="col">Carnet de Identidad</th>
+                            <th scope="col">Lugar de Nacimiento</th>
+                            <th scope="col">Estado Civil</th>
+                            <th scope="col">Nacionalidad</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -33,13 +33,13 @@
                             <tr>
                                 <td>{{ $cliente->id }}</td>
                                 <td>{{ $cliente->nombre }}</td>
-                                <td>{{ $cliente->descripcion }}</td>
-                                <td>{{ $cliente->updated_at }}</td>
-                                <td><a href="{{ asset($cliente->link) }}">Ver archivo</a></td>
-                                <td>{{ $cliente->Personal->nombre }}</td>
+                                <td>{{ $cliente->ci }}</td>
+                                <td>{{ $cliente->lugar_nac }}</td>
+                                <td>{{ $cliente->estado_civil}}</a></td>
+                                <td>{{ $cliente->nacionalidad }}</td>
 
                                 <td class="d-flex justify-content-center">
-                                    @can('cliente.edit')
+                                    /*@can('cliente.edit')
                                         <a href="{{ route('cliente.edit', $cliente) }}"
                                             class="btn btn-info btn-sm mx-1">Editar</a>
                                     @endcan
@@ -52,6 +52,7 @@
                                                 value="Borrar">Eliminar</button>
                                         </form>
                                     @endcan
+                                    */
                                 </td>
                             </tr>
                         @endforeach

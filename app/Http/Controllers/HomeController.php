@@ -28,10 +28,10 @@ class HomeController extends Controller
         $paginass=Pagina::all();
         $total=$paginass->sum('visitas');
 
-        $personal=Personal::selectRaw('p2_personal.nombre , SUM(p2_asistencias.retraso) as retraso')
-        ->join('p2_asistencias','p2_personal.id','p2_asistencias.personal_id')
-        ->groupBy('p2_personal.nombre')
-        ->get();
-        return view('home',compact('paginass','total','personal'));
+        // $personal=Personal::selectRaw('p2_personal.nombre , SUM(p2_asistencias.retraso) as retraso')
+        // ->join('p2_asistencias','p2_personal.id','p2_asistencias.personal_id')
+        // ->groupBy('p2_personal.nombre')
+        // ->get();
+        return view('home',compact('paginass','total'));
     }
 }

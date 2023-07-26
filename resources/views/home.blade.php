@@ -6,7 +6,7 @@
     <div class="container">
         <h1 class="d-flex justify-content-center"><b>Bienvenido {{ auth()->user()->name }}</b></h1>
 
-        <div id="divcategorias" class="card">
+        {{-- <div id="divcategorias" class="card">
             <div class="card-title my-2 mx-2">
                 <h4>Visualizaciones de Rutas:</h4>
             </div>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 @endsection
@@ -42,7 +42,7 @@
 @stop
 
 @section('js')
-    <script>
+    {{-- <script>
         cargarVisualizaciones()
         cargarPersonal()
         function cargarVisualizaciones() {
@@ -98,5 +98,5 @@
             var chart_participacion_productos = new ApexCharts(document.querySelector("#productos"), options);
             chart_participacion_productos.render();
         }
-    </script>
+    </script> --}}
 @stop

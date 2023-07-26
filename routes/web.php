@@ -9,10 +9,7 @@ use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\CertificadoController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\AsistenciaController;
-
-
-
-
+use App\Http\Controllers\ClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +53,6 @@ Route::get('certificado/verificar/{codigo}',[CertificadoController::class,'verif
 Route::get('certificado/download/{certificado}',[CertificadoController::class,'download'])->name('certificados.download');
 
 
-//Route::get('/usuario/index', [App\Http\Controllers\UsuarioController::class, 'index'])->name('usuario.index');
+Route::get('/cliente/index', [ClienteController::class, 'index'])->name('cliente.index');
 
 

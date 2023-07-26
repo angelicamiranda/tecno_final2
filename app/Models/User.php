@@ -50,23 +50,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function rol_name() {
-        if (sizeof($this->getRoleNames())>0){
-            return $this->getRoleNames()[0];
-        }
-        return "SIN ROL";
-    }
+    // public function rol_name() {
+    //     if (sizeof($this->getRoleNames())>0){
+    //         return $this->getRoleNames()[0];
+    //     }
+    //     return "SIN ROL";
+    // }
 
-    public function rol_id() {
-        $rol = DB::table('p2_roles')
-        ->join('p2_model_has_roles', 'role_id', '=', 'p2_roles.id')
-        ->join('users', 'users.id', '=', 'p2_model_has_roles.model_id')
-        ->where('users.id', '=', $this->id)
-        ->select('p2_roles.id')
-        ->get()
-        ->first();
-        return $rol->id;
-    }
+    // public function rol_id() {
+    //     $rol = DB::table('p2_roles')
+    //     ->join('p2_model_has_roles', 'role_id', '=', 'p2_roles.id')
+    //     ->join('users', 'users.id', '=', 'p2_model_has_roles.model_id')
+    //     ->where('users.id', '=', $this->id)
+    //     ->select('p2_roles.id')
+    //     ->get()
+    //     ->first();
+    //     return $rol->id;
+    // }
     public function rol(){
         return $this->belongsTo('App\Models\Rol','rol_id','id');
     }

@@ -17,26 +17,26 @@
             </a>
             <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
 
-                @can('users.index')
+                {{-- @can('users.index')
                     <li>
                         <a href="{{route('users.index')}}">
                             <i class="bi bi-person"></i>
                             <span>Usuarios</span>
                         </a>
                     </li>
-                @endcan
-                @can('roles')
+                @endcan --}}
+                {{-- @can('roles')
                     <li>
                         <a href="{{route('roles.index')}}">
                             <i class="bi bi-person"></i>
                             <span>Roles</span>
                         </a>
                     </li>
-                @endcan
+                @endcan --}}
             </ul>
         </li>
 
-        <li class="nav-item collapsed">
+        {{-- <li class="nav-item collapsed">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Gestionar</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
@@ -86,7 +86,7 @@
                 <i class="bi bi-person"></i>
                 <span>Asistencias</span>
             </a>
-        </li>
+        </li> --}}
         {{-- <a id="dark-mode" class="nav-link collapsed">
              <i class="fa-solid fa-moon-over-sun"></i> </a> --}}
         
