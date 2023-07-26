@@ -13,7 +13,7 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive my-3">
-                <table class="table table-striped" id="usuarios">
+                <table class="table table-striped" id="clientes">
 
                     <thead>
 
@@ -29,22 +29,22 @@
                     </thead>
 
                     <tbody>
-                        @foreach ($archivos as $archivo)
+                        @foreach ($clientes as $cliente)
                             <tr>
-                                <td>{{ $archivo->id }}</td>
-                                <td>{{ $archivo->nombre }}</td>
-                                <td>{{ $archivo->descripcion }}</td>
-                                <td>{{ $archivo->updated_at }}</td>
-                                <td><a href="{{ asset($archivo->link) }}">Ver archivo</a></td>
-                                <td>{{ $archivo->Personal->nombre }}</td>
+                                <td>{{ $cliente->id }}</td>
+                                <td>{{ $cliente->nombre }}</td>
+                                <td>{{ $cliente->descripcion }}</td>
+                                <td>{{ $cliente->updated_at }}</td>
+                                <td><a href="{{ asset($cliente->link) }}">Ver archivo</a></td>
+                                <td>{{ $cliente->Personal->nombre }}</td>
 
                                 <td class="d-flex justify-content-center">
-                                    @can('archivos.edit')
-                                        <a href="{{ route('archivos.edit', $archivo) }}"
+                                    @can('cliente.edit')
+                                        <a href="{{ route('cliente.edit', $cliente) }}"
                                             class="btn btn-info btn-sm mx-1">Editar</a>
                                     @endcan
-                                    @can('archivos.destroy')
-                                        <form action="{{ route('archivos.destroy', $archivo) }}" method="post">
+                                    @can('cliente.destroy')
+                                        <form action="{{ route('cliente.destroy', $cliente) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger btn-sm mx-1"

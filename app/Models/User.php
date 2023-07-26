@@ -18,8 +18,15 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'usuario'; //usa el nombre de la base de datos
     protected $fillable = [
-        'name',
+
+
+        'ci',
+        'nombre',
+        'cargo',
+        'condicion',
+        'rol_id',
         'email',
         'password',
     ];
@@ -67,6 +74,10 @@ class User extends Authenticatable
     public function cliente()
     {
         return $this->hasMany('App\Models\Cliente','usuario_id','id');
+    }
+    public function pagoServicio()
+    {
+        return $this->hasMany('App\Models\PagoServicio','usuario_id','id');
     }
 
 }

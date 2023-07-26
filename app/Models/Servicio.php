@@ -12,4 +12,10 @@ class Servicio extends Model
     protected $fillable = [ //atributos de la tabla
         'nombre'
     ];
+
+    public function pagoServicio()
+    {
+        return $this->hasMany('App\Models\PagoServicio','servicio_id','id');
+    }
+
 }
