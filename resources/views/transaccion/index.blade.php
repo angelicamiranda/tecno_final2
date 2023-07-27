@@ -8,7 +8,7 @@
 
 @section('content')
 
-        <a href="{{ route('users.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Transacción</a>
+        <a href="{{ route('transaccion.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Transacción</a>
 
 
     @if (session('error'))

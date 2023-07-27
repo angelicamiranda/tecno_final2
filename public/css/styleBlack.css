@@ -11,14 +11,14 @@
 :root {
   scroll-behavior: smooth;
   --pcl:#fff;
-  --scl: #F7F82F;
+  --scl: #95dda1;
   --bg: #333;
   --light-bg:rgb(82, 82, 82);
   --lighter-bg:rgb(112, 112, 112);
-  --dark-bg:#262626;
+  --dark-bg:#1a1c19ea;
   --light-color:#eee;
   --border:1px solid rgb(199, 199, 199);
-  --box-shadow:0px 0 20px rgba(240, 240, 118, 0.65);
+  --box-shadow:0px 0 20px rgba(12, 74, 22, 0.65);
   --btn-info-color: rgb(62, 63, 115);
   --btn-del-color: rgb(133, 43, 51);
   --font1: "Open Sans", sans-serif;
@@ -478,7 +478,7 @@ h6 {
   z-index: 997;
   height: 60px;
   box-shadow: var(--box-shadow);
-  background-color: var(--bg); 
+  background-color: var(--bg);
   padding-left: 20px;
   /* Toggle Sidebar Button */
   /* Search Bar */
