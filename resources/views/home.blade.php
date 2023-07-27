@@ -8,29 +8,43 @@
 
         <div id="divcategorias" class="card">
             <div class="card-title my-2 mx-2">
-                <h4>Visualizaciones de Rutas:</h4>
+                <h4> <b>
+                    Gráfico de Transacciones Realizadas
+                </b> </h4>
             </div>
             <div class="card-body">
                 <div class="d-flex justify-content-center">
-                    <div id="categorias" style="width: 500px; height: auto;">
+                    <div id="servicios" style="width: 500px; height: auto;">
 
                     </div>
                 </div>
                 <br>
-                <h5><b>Visitas totales: {{$total}}</b></h5>
+                <h5><b>Total de Transacciones: {{$total}}</b></h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-center">
+                    <div id="es" style="width: 500px; height: auto;">
+
+                    </div>
+                </div>
+                <br>
+
             </div>
         </div>
 
         <div id="divproductos" class="card">
             <div class="card-title my-2 mx-2">
-                <h4><b>Retrasos del Personal:</b></h4>
+                <h4><b>Gráfico de Pagos de Servicios:</b></h4>
             </div>
             <div class="card-body">
                 <div class="d-flex justify-content-center">
                     <div id="productos" style="width: 500px; height: 400px; border: 2px solid #blue;">
 
                     </div>
+
                 </div>
+                <br>
+                <h5><b>Total de Pagos de Servicios: {{$totalSer}}</b></h5>
             </div>
         </div>
 
@@ -43,20 +57,22 @@
 
 @section('js')
       <script>
-         cargarVisualizaciones()
+        cargarTransacción()
          cargarServicios()
 
-        function cargarVisualizaciones() {
+
+
+        function cargarTransacción() {
             let valores = []
             let nombres = []
-            let categorias = @json($paginass);
+            let categorias = @json($transacciones);
             const total = {{ $total }};
             console.log(total)
             console.log(categorias)
 
             for (const categoria of categorias) {
-                valores.push(categoria.visitas)
-                nombres.push(categoria.path)
+                valores.push(categoria.cantidad)
+                nombres.push(categoria.tipo_transaccion)
             }
             var options = {
                 chart: {
@@ -65,33 +81,39 @@
                 series: valores,
                 labels: nombres,
             };
-            var chart1 = new ApexCharts(document.querySelector("#categorias"), options);
+            var chart1 = new ApexCharts(document.querySelector("#servicios"), options);
 
             chart1.render();
         }
 
         function cargarServicios() {
-            let valores = []
-            let nombres = []
-            let categorias = @json($pagoServicios);
-            const total = {{ $servicios }};
-            console.log(total)
-            console.log(categorias)
-
-            for (const categoria of categorias) {
-                valores.push(categoria.)
-                nombres.push(categoria.path)
+            let data = [];
+            let productos = @json($servicios);
+            for (const producto of productos) {
+                const prod = {
+                    name: producto.nombre,
+                    data: [producto.cantidad]
+                }
+                data.push(prod);
             }
+
             var options = {
                 chart: {
-                    type: "pie"
+                    type: "bar"
                 },
-                series: valores,
-                labels: nombres,
+                plotOptions: {
+                    bar: {
+                        distributed: true
+                    }
+                },
+                series: data,
+                xaxis: {
+                    categories: ["Pago de Servicio"]
+                }
             };
-            var chart1 = new ApexCharts(document.querySelector("#categorias"), options);
 
-            chart1.render();
+            var chart_participacion_productos = new ApexCharts(document.querySelector("#productos"), options);
+            chart_participacion_productos.render();
         }
 
     </script>
