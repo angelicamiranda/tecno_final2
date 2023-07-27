@@ -37,7 +37,20 @@
 
             </div>
         </div>
+        <div id="divcategorias" class="card">
+            <div class="card-title my-2 mx-2">
+                <h4>Visualizaciones de Rutas:</h4>
+            </div>
+            <div class="card-body">
+                <div class="d-flex justify-content-center">
+                    <div id="categorias" style="width: 500px; height: auto;">
 
+                    </div>
+                </div>
+                <br>
+                <h5><b>Visitas totales: {{$total}}</b></h5>
+            </div>
+        </div>
 
 
     </div>
@@ -52,15 +65,15 @@
         cargarTransacción()
          cargarServicios()
 
-
+         cargarVisualizaciones()
 
         function cargarTransacción() {
             let valores = []
             let nombres = []
             let categorias = @json($transacciones);
-            const total = {{ $total }};
-            // console.log(total)
-            // console.log(categorias)
+            const total = {{ $totaless }};
+            console.log(total)
+            console.log(categorias)
 
             for (const categoria of categorias) {
                 valores.push(categoria.cantidad)
@@ -108,6 +121,30 @@
 
             var chart_participacion_productos = new ApexCharts(document.querySelector("#productos"), options);
             chart_participacion_productos.render();
+        }
+
+        function cargarVisualizaciones() {
+            let valores = []
+            let nombres = []
+            let categorias = @json($paginass);
+            const total = {{ $total }};
+            console.log(total)
+            console.log(categorias)
+
+            for (const categoria of categorias) {
+                valores.push(categoria.visitas)
+                nombres.push(categoria.path)
+            }
+            var options = {
+                chart: {
+                    type: "pie"
+                },
+                series: valores,
+                labels: nombres,
+            };
+            var chart1 = new ApexCharts(document.querySelector("#categorias"), options);
+
+            chart1.render();
         }
 
     </script>

@@ -17,6 +17,7 @@ use App\Http\Controllers\PagoServicioController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\TasaInteresController;
 use App\Http\Controllers\TransaccionController;
+use App\Models\CuentaAhorro;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,7 @@ Route::resource('transaccion', TransaccionController::class)->names('transaccion
 Route::resource('tasaInteres', TasaInteresController::class)->names('tasaInteres');
 Route::resource('credito', CreditoController::class)->names('credito');
 Route::resource('cuota', CuotaController::class)->names('cuota');
+Route::get('cuentaAhorro/movimientos/{cuentaAhorro}',[CuentaAhorroController::class,'movimientos'])->name('cuentaAhorro.movimientos');
 
 // Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 //   Route::group(['prefix'=> 'usuarios'], function () {

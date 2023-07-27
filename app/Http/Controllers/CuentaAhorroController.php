@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use App\Models\CuentaAhorro;
 use Illuminate\Http\Request;
+use App\Models\Transaccion;
 
 class CuentaAhorroController extends Controller
 {
@@ -56,7 +57,8 @@ class CuentaAhorroController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $cuentaAhorro=CuentaAhorro::findOrFail($id);
+        return view('cuentaAhorro.show', compact('cuentaAhorro'));
     }
 
     /**
@@ -81,5 +83,12 @@ class CuentaAhorroController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    public function movimientos(CuentaAhorro $cuentaAhorro)
+    {
+        $transacciones = Transaccion::where('cuenta_ahorro_id', $cuentaAhorro->id)->get();
+        return view('transaccion.index', compact('transacciones'));
     }
 }

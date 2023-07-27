@@ -29,6 +29,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        $paginass=Pagina::all();
+        $totaless=$paginass->sum('visitas');
+
         $transacciones=DB::table('transaccion')
         ->select('transaccion.tipo_transaccion', DB::raw('COUNT(transaccion.tipo_transaccion) as cantidad'))
         ->where('condicion', '=', 0)
@@ -44,6 +48,6 @@ class HomeController extends Controller
                 ->get();
 
         $totalSer = $servicios->sum('cantidad');
-        return view('home',compact('transacciones','total', 'totalSer', 'servicios'));
+        return view('home',compact('transacciones','total', 'totalSer', 'servicios', 'paginass','totaless'));
     }
 }
