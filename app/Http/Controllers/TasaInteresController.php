@@ -12,7 +12,7 @@ class TasaInteresController extends Controller
      */
     public function index()
     {
-        $tasas = TasaInteres::all();
+        $tasas = TasaInteres::where('condicion',0)->get();
         return view('tasaInteres.index', compact('tasas'));
     }
 
@@ -91,9 +91,9 @@ class TasaInteresController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TasaInteres $tasa)
+    public function destroy(TasaInteres $tasaIntere)
     {
-        $tasa->delete();
+        $tasaIntere->condicion = 1;
         return redirect()->route('tasaInteres.index');
     }
 }

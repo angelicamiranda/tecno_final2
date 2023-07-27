@@ -80,9 +80,9 @@
                     <select name="rol_id" class="form-control col-md-6" id="rol_id">
                         @foreach ($roles as $rol)
                         @if ($user->rol_id == $rol->id)
-                            <option class="text-dark" selected value="{{$rol->id}}">{{$rol->nombre}}</option>
+                            <option selected value="{{$rol->id}}">{{$rol->nombre}}</option>
                         @else
-                            <option class="text-dark" value="{{$rol->id}}">{{$rol->nombre}}</option>
+                            <option value="{{$rol->id}}">{{$rol->nombre}}</option>
                         @endif
                     @endforeach
                     </select>
