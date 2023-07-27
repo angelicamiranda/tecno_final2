@@ -3,7 +3,7 @@
 @section('title', 'Ver Crédito')
 
 @section('content_header')
-    <h1>DETALLE DEL CRÉTIDO/h1>
+    <h1>DETALLE DEL CRÉTIDO</h1>
 @stop
 
 @section('content')

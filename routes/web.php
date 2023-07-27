@@ -48,6 +48,8 @@ Route::resource('cuota', CuotaController::class)->names('cuota');
 Route::get('cuentaAhorro/movimientos/{cuentaAhorro}',[CuentaAhorroController::class,'movimientos'])->name('cuentaAhorro.movimientos');
 Route::get('credito/cuotas/{credito}',[CreditoController::class,'cuotas'])->name('credito.cuotas');
 
+Route::get('credito/estadoview/{credito}',[CreditoController::class,'estadoview'])->name('credito.estadoview');
+Route::patch('credito/estado/{credito}',[CreditoController::class,'estado'])->name('credito.estado');
 // Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 //   Route::group(['prefix'=> 'usuarios'], function () {
 //         Route::get('profile',[UserController::class,'show2'])->name('user.show');

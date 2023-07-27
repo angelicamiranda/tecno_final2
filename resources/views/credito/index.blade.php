@@ -41,16 +41,16 @@
                   <td>{{($credito->motivo == null)? "--":$credito->motivo}}</td>
                   <td>{{($credito->estado == null)? "--":$credito->estado}}</td>
                   <td>
-                     <form action="{{route('credito.destroy', $credito)}}" method="post">
-                      @csrf
-                      @method('delete')
+
                      <a class="btn btn-primary btn-sm" href="{{route('credito.show',$credito)}}">Ver</a>
-
+                     @if (Auth::user()->rol_id == 2)
                       <a href="{{route('credito.edit',$credito)}}" class="btn btn-info btn-sm">Editar</a>
+                      @endif
+                      @if (Auth::user()->rol_id == 1)
+                      <a href="{{route('credito.estadoview',$credito)}}" class="btn btn-info btn-sm">Editar Estado</a>
+                      @endif
 
-                      <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
-                      value="Borrar">Eliminar</button>
-                    </form>
+
                   </td>
                 </tr>
                @endforeach

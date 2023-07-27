@@ -195,4 +195,20 @@ class CreditoController extends Controller
         $cuotas = Cuota::where('credito_id', $credito->id)->get();
         return view('cuota.index', compact('cuotas'));
     }
+
+    public function estado(Request $request, Credito $credito)
+    {
+       $credito->estado = $request->estado;
+       $credito->save();
+
+       $creditos =Credito::where('condicion',0)->get();
+        return view('credito.index', compact('creditos'));
+    }
+
+    public function estadoview(Credito $credito)
+    {
+        $tasas = TasaInteres::get();
+        $clientes = Cliente::get();
+        return view('credito.estado',compact('credito'));
+    }
 }
