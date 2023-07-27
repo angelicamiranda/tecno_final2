@@ -35,7 +35,7 @@
     @yield('css')
     <script>
         let stylesheet = document.getElementById("stylesheet");
-        if(localStorage.filecss !== null ){
+        if(localStorage.filecss != null ){
             if(stylesheet.href!== localStorage.filecss){
             stylesheet.href= localStorage.filecss;
             }
