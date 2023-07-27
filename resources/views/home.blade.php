@@ -6,7 +6,7 @@
     <div class="container">
         <h1 class="d-flex justify-content-center"><b>Bienvenido {{ auth()->user()->name }}</b></h1>
 
-        {{-- <div id="divcategorias" class="card">
+        <div id="divcategorias" class="card">
             <div class="card-title my-2 mx-2">
                 <h4>Visualizaciones de Rutas:</h4>
             </div>
@@ -28,11 +28,11 @@
             <div class="card-body">
                 <div class="d-flex justify-content-center">
                     <div id="productos" style="width: 500px; height: 400px; border: 2px solid #blue;">
-    
+
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
 
     </div>
 @endsection
@@ -42,9 +42,10 @@
 @stop
 
 @section('js')
-    {{-- <script>
-        cargarVisualizaciones()
-        cargarPersonal()
+      <script>
+         cargarVisualizaciones()
+         cargarServicios()
+
         function cargarVisualizaciones() {
             let valores = []
             let nombres = []
@@ -69,34 +70,29 @@
             chart1.render();
         }
 
-        function cargarPersonal() {
-            let data = [];
-            let productos = @json($personal);
-            for (const producto of productos) {
-                const prod = {
-                    name: producto.nombre,
-                    data: [producto.retraso]
-                }
-                data.push(prod);
-            }
+        function cargarServicios() {
+            let valores = []
+            let nombres = []
+            let categorias = @json($pagoServicios);
+            const total = {{ $servicios }};
+            console.log(total)
+            console.log(categorias)
 
+            for (const categoria of categorias) {
+                valores.push(categoria.)
+                nombres.push(categoria.path)
+            }
             var options = {
                 chart: {
-                    type: "bar"
+                    type: "pie"
                 },
-                plotOptions: {
-                    bar: {
-                        distributed: true
-                    }
-                },
-                series: data,
-                xaxis: {
-                    categories: ["Retrasos del Personalxd"]
-                }
+                series: valores,
+                labels: nombres,
             };
-            
-            var chart_participacion_productos = new ApexCharts(document.querySelector("#productos"), options);
-            chart_participacion_productos.render();
+            var chart1 = new ApexCharts(document.querySelector("#categorias"), options);
+
+            chart1.render();
         }
-    </script> --}}
+
+    </script>
 @stop

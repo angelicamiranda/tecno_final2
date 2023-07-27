@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pagina;
+use App\Models\PagoServicio;
 use App\Models\Personal;
+use App\Models\Servicio;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -27,11 +30,16 @@ class HomeController extends Controller
     {
         $paginass=Pagina::all();
         $total=$paginass->sum('visitas');
+        $pagoServicios=PagoServicio::all();
 
-        // $personal=Personal::selectRaw('p2_personal.nombre , SUM(p2_asistencias.retraso) as retraso')
-        // ->join('p2_asistencias','p2_personal.id','p2_asistencias.personal_id')
-        // ->groupBy('p2_personal.nombre')
-        // ->get();
-        return view('home',compact('paginass','total'));
+
+        
+        $servicios = DB::table('pago_servicio')
+                ->join('servicio', 'pago_servicio.servicio_id', '=', 'servicio.id')
+                ->select('servicio.nombre', DB::raw('COUNT(servicio.nombre) as cantidad'))
+                ->where('condicion', '=', 0)
+                ->groupBy('servicio.nombre')
+                ->get();
+        return view('home',compact('paginass','total', 'pagoServicios', 'servicios'));
     }
 }
