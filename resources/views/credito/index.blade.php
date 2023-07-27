@@ -7,10 +7,10 @@
 @stop
 
 @section('content')
-
+@if (Auth::user()->rol_id == 2)
         <a href="{{ route('credito.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Crédito</a>
 
-
+@endif
     @if (session('error'))
         <div class="alert alert-danger">
             <strong>{{ session('error') }}</strong>
