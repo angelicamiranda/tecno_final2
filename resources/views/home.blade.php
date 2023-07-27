@@ -59,8 +59,8 @@
             let nombres = []
             let categorias = @json($transacciones);
             const total = {{ $total }};
-            console.log(total)
-            console.log(categorias)
+            // console.log(total)
+            // console.log(categorias)
 
             for (const categoria of categorias) {
                 valores.push(categoria.cantidad)
@@ -103,6 +103,8 @@
                     categories: ["Pago de Servicio"]
                 }
             };
+
+            console.log(options)
 
             var chart_participacion_productos = new ApexCharts(document.querySelector("#productos"), options);
             chart_participacion_productos.render();
