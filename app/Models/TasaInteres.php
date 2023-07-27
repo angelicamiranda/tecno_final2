@@ -15,4 +15,5 @@ class TasaInteres extends Model
         'porcentaje',
         'condicion'
     ];
+    public $timestamps = false;
 }

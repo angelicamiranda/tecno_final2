@@ -17,14 +17,14 @@
             </a>
             <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
 
-                @if (Auth::user()->rol_id == 1)
+                {{-- @if (Auth::user()->rol_id == 1) --}}
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="{{route('users.index')}}">
                             <i class="bi bi-person"></i>
                             <span>Usuarios</span>
                         </a>
                     </li>
-                @endif
+                {{-- @endif --}}
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="{{route('cliente.index')}}">
                         <i class="bi bi-person"></i>
@@ -34,7 +34,7 @@
 
             </ul>
         </li>
-        @if (Auth::user()->rol_id == 2)
+        {{-- @if (Auth::user()->rol_id == 2) --}}
             <li class="nav-item collapsed">
                 <a class="nav-link collapsed" data-bs-target="#components-nav1" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-menu-button-wide"></i><span>Ahorro</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -56,7 +56,7 @@
 
                 </ul>
             </li>
-        @endif
+        {{-- @endif --}}
 
         <li class="nav-item collapsed">
             <a class="nav-link collapsed" data-bs-target="#components-nav2" data-bs-toggle="collapse" href="#">
@@ -64,35 +64,41 @@
             </a>
             <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="{{route('cliente.index')}}">
+                {{-- <li class="nav-item">
+                    <a class="nav-link collapsed" href="{{route('credito.index')}}">
                         <i class="bi bi-person"></i>
                         <span>Créditos</span>
                     </a>
+                </li> --}}
+                {{-- @if (Auth::user()->rol_id == 2) --}}
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="{{route('tasaInteres.index')}}">
+                        <i class="bi bi-person"></i>
+                        <span>Tasa de Interés</span>
+                    </a>
                 </li>
-                @if (Auth::user()->rol_id == 2)
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="{{route('cliente.index')}}">
-                            <i class="bi bi-person"></i>
-                            <span>Tasa de Interés</span>
-                        </a>
-                    </li>
-                @endif
+                {{-- <li class="nav-item">
+                    <a class="nav-link collapsed" href="{{route('cuota.index')}}">
+                        <i class="bi bi-person"></i>
+                        <span>Cuotas</span>
+                    </a>
+                </li> --}}
+                {{-- @endif --}}
             </ul>
         </li>
-        @if (Auth::user()->rol_id == 2)
+        {{-- @if (Auth::user()->rol_id == 2) --}}
             <li class="nav-item collapsed">
                 <a class="nav-link collapsed" data-bs-target="#components-nav3" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-menu-button-wide"></i><span>Servicios Básicos</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav3" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link collapsed" href="{{route('servicio.index')}}">
                             <i class="bi bi-person"></i>
                             <span>Sevicios Disponibles</span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="{{route('pagoServicio.index')}}">
                             <i class="bi bi-person"></i>
@@ -102,7 +108,7 @@
 
                 </ul>
             </li>
-        @endif
+        {{-- @endif --}}
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{route('cliente.index')}}">
                 <i class="bi bi-person"></i>

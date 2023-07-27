@@ -21,7 +21,7 @@ class TasaInteresController extends Controller
      */
     public function create()
     {
-        //
+        return view('tasaInteres.create');
     }
 
     /**
@@ -29,7 +29,19 @@ class TasaInteresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tipo' => 'required|string|max:20',
+            'descripcion' => 'required|string|max:50',
+            'porcentaje' => 'required|numeric|between:0.01,0.99'
+        ]);
+        $tasa=TasaInteres::create([
+            'tipo' => $request['tipo'],
+            'descripcion' => $request['descripcion'],
+            'porcentaje' => $request['porcentaje'],
+        ]);
+        $tasa->save();
+
+        return redirect()->route('tasaInteres.index');
     }
 
     /**
@@ -43,24 +55,45 @@ class TasaInteresController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(TasaInteres $tasa)
     {
-        //
+        return view('tasaInteres.edit', compact('tasa'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, TasaInteres $tasa)
     {
-        //
+        if($tasa->tipo <> $request->tipo){
+            $request->validate([
+                'tipo' => 'required|string|max:20',
+            ]);
+            $tasa->tipo = $request->tipo;
+        }
+
+        if($tasa->descripcion <> $request->descripcion){
+            $request->validate([
+                'descripcion' => 'required|string|max:50',
+            ]);
+            $tasa->descripcion = $request->descripcion;
+        }
+        if($tasa->porcentaje <> $request->porcentaje){
+            $request->validate([
+                'porcentaje' => 'required|numeric|between:0.01,0.99'
+            ]);
+            $tasa->porcentaje = $request->porcentaje;
+        }
+        $tasa->save();
+        return redirect()->route('tasaInteres.edit', $tasa)->with('info', 'se actualizo el tasa correctamente');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(TasaInteres $tasa)
     {
-        //
+        $tasa->delete();
+        return redirect()->route('tasaInteres.index');
     }
 }
