@@ -64,12 +64,12 @@
             </a>
             <ul id="components-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
 
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link collapsed" href="{{route('credito.index')}}">
                         <i class="bi bi-person"></i>
                         <span>Créditos</span>
                     </a>
-                </li> --}}
+                </li>
                 {{-- @if (Auth::user()->rol_id == 2) --}}
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="{{route('tasaInteres.index')}}">
@@ -77,12 +77,12 @@
                         <span>Tasa de Interés</span>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link collapsed" href="{{route('cuota.index')}}">
                         <i class="bi bi-person"></i>
                         <span>Cuotas</span>
                     </a>
-                </li> --}}
+                </li>
                 {{-- @endif --}}
             </ul>
         </li>

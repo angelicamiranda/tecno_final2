@@ -21,7 +21,43 @@
 
     <div class="card">
         <div class="card-body">
-            
+            <form method="post" action="{{ route('tasaInteres.update', $tasa) }}">
+                @csrf
+                @method('PATCH')
+
+                <div class="form-group col-md-6 my-3">
+                    <label for="tipo"><b>Tipo de la Tasa de Interés</b></label>
+                    <input name="tipo" type="text" class="form-control" value="{{ old('tipo', $tasa->tipo) }}"
+                        id="tipo">
+                    @error('tipo')
+                        <small>{{ $message }}</small>
+                        <br><br>
+                    @enderror
+                </div>
+
+                <div class="form-group col-md-6 my-3">
+                    <label for="descripcion"><b>Descripción de la Tasa de Interés</b></label>
+                    <input name="descripcion" type="text" class="form-control" value="{{ old('descripcion', $tasa->descripcion) }}"
+                        id="descripcion">
+                    @error('descripcion')
+                        <small>{{ $message }}</small>
+                        <br><br>
+                    @enderror
+                </div>
+
+                <div class="form-group col-md-6 my-3">
+                    <label for="porcentaje"><b>Porcentaje de la Tasa de Interés</b></label>
+                    <input name="porcentaje" type="decimal" class="form-control" value="{{ old('porcentaje', $tasa->porcentaje) }}"
+                        id="porcentaje">
+                    @error('porcentaje')
+                        <small>{{ $message }}</small>
+                        <br><br>
+                    @enderror
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2">Actualizar Tasa de Interés</button>
+                <a href="{{ route('tasaInteres.index') }}"class="btn btn-warning mt-2">Volver</a>
+            </form>
 
         </div>
     </div>

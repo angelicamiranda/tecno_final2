@@ -17,7 +17,7 @@ class Cuota extends Model
         'condicion',
         'credito_id'
     ];
-
+    public $timestamps = false;
 
     public function credito(){
         return $this->belongsTo('App\Models\Credito','credito_id','id');
