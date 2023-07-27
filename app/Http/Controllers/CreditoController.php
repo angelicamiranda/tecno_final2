@@ -87,15 +87,6 @@ class CreditoController extends Controller
      */
     public function update(Request $request, Credito $credito)
     {
-        $request->validate([
-            'monto' => 'required|numeric|between:50,999999.50',
-            'motivo' => 'required|string|max:50',
-            'plazo' => 'required|numeric|between:1,50',
-            'dia_desembolso' => 'required',
-            'periodo_gracia' => 'required|string|max:20',
-            'cargo_adicional' => 'required|numeric|between:0.50,99999.50',
-        ]);
-
         if($credito->monto <> $request->monto){
             $request->validate([
                 'monto' => 'required|numeric|between:50,999999.50',

@@ -13,7 +13,7 @@ class CuotaController extends Controller
      */
     public function index()
     {
-       $cuotas = Cuota::all();
+       $cuotas = Cuota::where('condicion',0)->get();
        return view('cuota.index', compact('cuotas'));
     }
 
@@ -68,25 +68,25 @@ class CuotaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Cuota $cuotum)
     {
-        //
+        return view('cuota.show', compact('cuotum'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Cuota $cuotum)
     {
-        //
+        $creditos = Credito::get();
+        return view('credito.edit',compact('cuotum', 'creditos', 'mensaje'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Cuota $cuotum)
     {
-        //
     }
 
     /**

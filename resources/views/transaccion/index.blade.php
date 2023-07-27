@@ -47,7 +47,7 @@
                      {{--  <form action="{{route('users.destroy', $user)}}" method="post">
                       @csrf
                       @method('delete')  --}}
-                       <a class="btn btn-primary btn-sm" href="{{route('transaccion.show',$transaccione->id)}}">Ver</a>
+                      <a class="btn btn-primary btn-sm" href="{{route('transaccion.show',$transaccione->id)}}">Ver</a>
 
                         {{--  <a href="{{route('users.edit',$user)}}" class="btn btn-info btn-sm">Editar</a>  --}}
 

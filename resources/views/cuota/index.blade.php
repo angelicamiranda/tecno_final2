@@ -41,16 +41,7 @@
                   <td>{{$cuota->credito->motivo}}</td>
                   <td>{{$cuota->fecha}}</td>
                   <td>
-                     <form action="{{route('cuota.destroy', $cuota)}}" method="post">
-                      @csrf
-                      @method('delete')
-                       {{-- <a class="btn btn-primary btn-sm" href="{{route('cuotaServicio.show',$cuota)}}">Ver</a> --}}
-
-                      <a href="{{route('cuota.edit',$cuota)}}" class="btn btn-info btn-sm">Editar</a>
-
-                      <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
-                      value="Borrar">Eliminar</button>
-                    </form>
+                    <a class="btn btn-primary btn-sm" href="{{route('cuota.show',$cuota)}}">Ver</a>
                   </td>
                 </tr>
                @endforeach
