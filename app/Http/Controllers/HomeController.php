@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pagina;
+use App\Models\PagoServicio;
 use App\Models\Personal;
+use App\Models\Servicio;
+use App\Models\Transaccion;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -25,13 +29,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $paginass=Pagina::all();
-        $total=$paginass->sum('visitas');
+        $transacciones=DB::table('transaccion')
+        ->select('transaccion.tipo_transaccion', DB::raw('COUNT(transaccion.tipo_transaccion) as cantidad'))
+        ->where('condicion', '=', 0)
+        ->groupBy('transaccion.tipo_transaccion')
+        ->get();
+        $total=$transacciones->sum('cantidad');
+        $pagoServicios=PagoServicio::all();
+        $servicios = DB::table('pago_servicio')
+                ->join('servicio', 'pago_servicio.servicio_id', '=', 'servicio.id')
+                ->select('servicio.nombre', DB::raw('COUNT(servicio.nombre) as cantidad'))
+                ->where('condicion', '=', 0)
+                ->groupBy('servicio.nombre')
+                ->get();
 
-        // $personal=Personal::selectRaw('p2_personal.nombre , SUM(p2_asistencias.retraso) as retraso')
-        // ->join('p2_asistencias','p2_personal.id','p2_asistencias.personal_id')
-        // ->groupBy('p2_personal.nombre')
-        // ->get();
-        return view('home',compact('paginass','total'));
+        $totalSer = $servicios->sum('cantidad');
+        return view('home',compact('transacciones','total', 'totalSer', 'servicios'));
     }
 }
