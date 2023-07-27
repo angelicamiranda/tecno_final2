@@ -4,22 +4,28 @@
 
 @section('content')
     <div class="container">
-        <h1 class="d-flex justify-content-center"><b>Bienvenido {{ auth()->user()->name }}</b></h1>
+        <h1 class="d-flex justify-content-center"><b>Bienvenido {{ auth()->user()->nombre }}</b></h1>
 
         <div id="divcategorias" class="card">
-            <div class="card-title my-2 mx-2">
+            <div class="card-title my-2 mx-2 justify-content-center">
                 <h4> <b>
-                    Gráfico de Transacciones Realizadas
+                    Gráficos de Transacciones y Pagos de Servicios Básicos
                 </b> </h4>
+
             </div>
+
             <div class="card-body">
                 <div class="d-flex justify-content-center">
                     <div id="servicios" style="width: 500px; height: auto;">
 
                     </div>
+                    <div id="productos" style="width: 500px; height: 400px; border: 2px solid #blue;">
+
+                    </div>
                 </div>
                 <br>
                 <h5><b>Total de Transacciones: {{$total}}</b></h5>
+                <h5><b>Total de Pagos de Servicios: {{$totalSer}}</b></h5>
             </div>
             <div class="card-body">
                 <div class="d-flex justify-content-center">
@@ -32,21 +38,7 @@
             </div>
         </div>
 
-        <div id="divproductos" class="card">
-            <div class="card-title my-2 mx-2">
-                <h4><b>Gráfico de Pagos de Servicios:</b></h4>
-            </div>
-            <div class="card-body">
-                <div class="d-flex justify-content-center">
-                    <div id="productos" style="width: 500px; height: 400px; border: 2px solid #blue;">
 
-                    </div>
-
-                </div>
-                <br>
-                <h5><b>Total de Pagos de Servicios: {{$totalSer}}</b></h5>
-            </div>
-        </div>
 
     </div>
 @endsection
