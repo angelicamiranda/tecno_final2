@@ -41,7 +41,7 @@ class UserController extends Controller
             'password' => 'required|string|min:4',
         ]);
         $users=User::create([
-            'nombre' => $request['name'],
+            'nombre' => $request['nombre'],
             'ci' => $request['ci'],
             'cargo' => $request['cargo'],
             'email' => $request['email'],
@@ -116,7 +116,7 @@ class UserController extends Controller
         if($request->password <> ''){
             $user->password = bcrypt($request->password);
         }
-        
+
         if($user->rol_id <> $request->rol_id ){
             $user->rol_id = $request->rol_id;
         }
