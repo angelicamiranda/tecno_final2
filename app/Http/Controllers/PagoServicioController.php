@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PagoServicio;
 use App\Models\Servicio;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PagoServicioController extends Controller
@@ -23,7 +24,8 @@ class PagoServicioController extends Controller
     public function create()
     {
         $servicios = Servicio::get();
-        return view('pagoServicio.create',compact('servicios'));
+        $users = User::all();
+        return view('pagoServicio.create',compact('servicios', 'users'));
     }
 
     /**
@@ -31,7 +33,24 @@ class PagoServicioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'monto' => 'required|numeric|between:50,999999.50',
+            'fecha' => 'required',
+            'codigo_cliente' => 'required|unique:pago_servicio'
+              ]);
+
+         $pagoServicio = PagoServicio::create([
+                    'monto' => $request['monto'],
+                    'codigo_cliente' => $request['codigo_cliente'],
+                    'monto' => $request['monto'],
+                    'fecha' => $request['fecha'],
+                    'usuario_id' => $request['usuario_id'],
+                    'servicio_id' => $request['servicio_id'],
+                ]);
+                $pagoServicio->save();
+                return redirect()->route('pagoServicio.index');
+
+
     }
 
     /**

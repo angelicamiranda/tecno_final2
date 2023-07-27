@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\Credito;
+use App\Models\Cuota;
 use App\Models\TasaInteres;
 use Illuminate\Http\Request;
 
@@ -69,7 +70,8 @@ class CreditoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $credito=Credito::findOrFail($id);
+        return view('credito.show', compact('credito'));
     }
 
     /**
@@ -186,5 +188,11 @@ class CreditoController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function cuotas(Credito $credito)
+    {
+        $cuotas = Cuota::where('credito_id', $credito->id)->get();
+        return view('cuota.index', compact('cuotas'));
     }
 }

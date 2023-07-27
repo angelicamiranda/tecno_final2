@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <br>
-                <h5><b>Visitas totales: {{$total}}</b></h5>
+                <h5><b>Visitas totales: {{$totaless}}</b></h5>
             </div>
         </div>
 

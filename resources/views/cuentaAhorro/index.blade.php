@@ -36,10 +36,10 @@
              <tbody>
               @foreach ($cuentas as $cuenta)
                 <tr>
-                  <td>{{$cuenta->id}}</td>
-                  <td>{{$cuenta->numero_cuenta}}</td>
-                  <td>{{$cuenta->cliente->nombre}}</td>
-                  <td>{{$cuenta->tipo_moneda}}</td>
+                  <td>{{($cuenta->id == null)? "--": $cuenta->id}}</td>
+                  <td>{{($cuenta->numero_cuenta == null)? "--":$cuenta->numero_cuenta}}</td>
+                  <td>{{($cuenta->nombre == null)? "--":$cuenta->cliente->nombre}}</td>
+                  <td>{{($cuenta->tipo_moneda == null)? "--":$cuenta->tipo_moneda}}</td>
                   <td>
                       {{--  <form action="{{route('users.destroy', $user)}}" method="post">
                       @csrf

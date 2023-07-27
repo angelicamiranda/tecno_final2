@@ -38,12 +38,12 @@
             <tbody>
                 @foreach ($clientes as $cliente)
                     <tr>
-                        <td>{{ $cliente->id }}</td>
-                        <td>{{ $cliente->nombre }}</td>
-                        <td>{{ $cliente->ci }}</td>
-                        <td>{{ $cliente->lugar_nac }}</td>
-                        <td>{{ $cliente->estado_civil}}</a></td>
-                        <td>{{ $cliente->nacionalidad }}</td>
+                        <td>{{($cliente->id == null)? "--": $cliente->id }}</td>
+                        <td>{{($cliente->nombre == null)? "--": $cliente->nombre }}</td>
+                        <td>{{($cliente->ci == null)? "--": $cliente->ci }}</td>
+                        <td>{{ ($cliente->lugar_nac == null)? "--":$cliente->lugar_nac }}</td>
+                        <td>{{ ($cliente->estado_civil == null)? "--":$cliente->estado_civil}}</a></td>
+                        <td>{{ ($cliente->nacionalidad == null)? "--":$cliente->nacionalidad }}</td>
 
                         <td class="d-flex justify-content-center">
                             <form action="{{route('cliente.destroy', $cliente)}}" method="post">

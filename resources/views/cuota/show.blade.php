@@ -35,30 +35,30 @@
                     <td>{{ $cuotum->credito->cliente->nombre }}</td>
                   </tr>
                   <tr>
-                    <th>Número de la Cuenta </th>
-                    <td>{{ $transaccion->cuenta_ahorro->numero_cuenta }}</td>
+                    <th>Motivo del Crédito </th>
+                    <td>{{ $cuotum->credito->motivo }}</td>
                   </tr>
 
                   <tr>
-                    <th>Fecha de Transacción</th>
-                    <td>{{ $transaccion->fecha }}</td>
+                    <th>Monto Pagado</th>
+                    <td>{{ $cuotum->monto }}</td>
                   </tr>
                   <tr>
-                      <th>Monto</th>
+                      <th>Fecha de Pago</th>
                       <td>
-                      {{ $transaccion->monto }}
+                      {{ $cuotum->fecha }}
                       </td>
                   </tr>
                   <tr>
-                      <th>Tipo de Moneda</th>
+                      <th>Cargo Adicional</th>
                       <td>
-                      {{ $transaccion->cuenta_ahorro->tipo_moneda }}
+                      {{ $cuotum->cargo_adicional }}
                       </td>
                   </tr>
                   <tr>
-                    <th>Tipo de Transacción</th>
+                    <th>Total Pagado</th>
                     <td>
-                    {{ $transaccion->tipo_transaccion }}
+                    {{ $cuotum->total_cuota }}
                     </td>
                 </tr>
                 </tbody>

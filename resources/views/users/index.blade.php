@@ -37,10 +37,10 @@
              <tbody>
                 @foreach ($users as $user)
                   <tr>
-                    <td>{{$user->id}}</td>
-                    <td>{{$user->ci}}</td>
-                    <td>{{$user->nombre}}</td>
-                    <td>{{$user->cargo}}</td>
+                    <td>{{($user->id == null)? "--":$user->id}}</td>
+                    <td>{{($user->ci == null)? "--":$user->ci}}</td>
+                    <td>{{($user->nombre == null)? "--":$user->nombre}}</td>
+                    <td>{{($user->cargo == null)? "--":$user->cargo}}</td>
                     {{-- <td>{{$user->rol_name()}}</td> --}}
                     <td>
                       <form action="{{route('users.destroy', $user)}}" method="post">

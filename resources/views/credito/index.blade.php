@@ -36,15 +36,15 @@
              <tbody>
               @foreach ($creditos as $credito)
                 <tr>
-                  <td>{{$credito->id}}</td>
-                  <td>{{$credito->cliente->nombre}}</td>
-                  <td>{{$credito->motivo}}</td>
-                  <td>{{$credito->estado}}</td>
+                  <td>{{($credito->id == null)? "--":$credito->id}}</td>
+                  <td>{{($credito->cliente_id == null)? "--":$credito->cliente->nombre}}</td>
+                  <td>{{($credito->motivo == null)? "--":$credito->motivo}}</td>
+                  <td>{{($credito->estado == null)? "--":$credito->estado}}</td>
                   <td>
                      <form action="{{route('credito.destroy', $credito)}}" method="post">
                       @csrf
                       @method('delete')
-                       {{-- <a class="btn btn-primary btn-sm" href="{{route('creditoServicio.show',$credito)}}">Ver</a> --}}
+                     <a class="btn btn-primary btn-sm" href="{{route('credito.show',$credito)}}">Ver</a>
 
                       <a href="{{route('credito.edit',$credito)}}" class="btn btn-info btn-sm">Editar</a>
 

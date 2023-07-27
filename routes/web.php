@@ -46,6 +46,7 @@ Route::resource('tasaInteres', TasaInteresController::class)->names('tasaInteres
 Route::resource('credito', CreditoController::class)->names('credito');
 Route::resource('cuota', CuotaController::class)->names('cuota');
 Route::get('cuentaAhorro/movimientos/{cuentaAhorro}',[CuentaAhorroController::class,'movimientos'])->name('cuentaAhorro.movimientos');
+Route::get('credito/cuotas/{credito}',[CreditoController::class,'cuotas'])->name('credito.cuotas');
 
 // Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 //   Route::group(['prefix'=> 'usuarios'], function () {

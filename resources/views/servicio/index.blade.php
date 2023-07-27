@@ -8,7 +8,7 @@
 
 @section('content')
 
-        <a href="{{ route('users.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Servicio</a>
+        {{--  <a href="{{ route('users.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Servicio</a>  --}}
 
 
     @if (session('error'))
@@ -28,15 +28,15 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>
 
-                <th scope="col">Acciones</th>
+
               </tr>
             </thead>
 
              <tbody>
               @foreach ($servicios as $servicio)
                 <tr>
-                  <td>{{$servicio->id}}</td>
-                  <td>{{$servicio->nombre}}</td>
+                  <td>{{($servicio->id == null)? "--":$servicio->id}}</td>
+                  <td>{{($servicio->nombre == null)? "--":$servicio->nombre}}</td>
 
                   <td>
                     {{--  <form action="{{route('users.destroy', $user)}}" method="post">
