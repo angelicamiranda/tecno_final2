@@ -28,7 +28,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nro Cuenta</th>
                 <th scope="col">Cliente</th>
-
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
 

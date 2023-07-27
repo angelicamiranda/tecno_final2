@@ -55,37 +55,37 @@ class TasaInteresController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TasaInteres $tasa)
+    public function edit(TasaInteres $tasaIntere)
     {
-        return view('tasaInteres.edit', compact('tasa'));
+        return view('tasaInteres.edit', compact('tasaIntere'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TasaInteres $tasa)
+    public function update(Request $request, TasaInteres $tasaIntere)
     {
-        if($tasa->tipo <> $request->tipo){
+        if($tasaIntere->tipo <> $request->tipo){
             $request->validate([
                 'tipo' => 'required|string|max:20',
             ]);
-            $tasa->tipo = $request->tipo;
+            $tasaIntere->tipo = $request->tipo;
         }
 
-        if($tasa->descripcion <> $request->descripcion){
+        if($tasaIntere->descripcion <> $request->descripcion){
             $request->validate([
                 'descripcion' => 'required|string|max:50',
             ]);
-            $tasa->descripcion = $request->descripcion;
+            $tasaIntere->descripcion = $request->descripcion;
         }
-        if($tasa->porcentaje <> $request->porcentaje){
+        if($tasaIntere->porcentaje <> $request->porcentaje){
             $request->validate([
                 'porcentaje' => 'required|numeric|between:0.01,0.99'
             ]);
-            $tasa->porcentaje = $request->porcentaje;
+            $tasaIntere->porcentaje = $request->porcentaje;
         }
-        $tasa->save();
-        return redirect()->route('tasaInteres.edit', $tasa)->with('info', 'se actualizo el tasa correctamente');
+        $tasaIntere->save();
+        return redirect()->route('tasaInteres.edit', $tasaIntere)->with('info', 'se actualizo el tasa correctamente');
     }
 
     /**

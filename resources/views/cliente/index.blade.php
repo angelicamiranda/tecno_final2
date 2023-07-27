@@ -5,7 +5,7 @@
 
 @section('content_header')
     <h1>LISTA DE CLIENTES</h1>
-
+@endsection
 @section('content')
 
         <a href="{{ route('cliente.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Cliente</a>
@@ -50,9 +50,9 @@
                                 @csrf
                                 @method('delete')
                                 {{-- <a class="btn btn-primary btn-sm" href="{{route('cleintes.show',$cleinte)}}">Ver</a> --}}
-        
+
                                   <a href="{{route('cliente.edit',$cliente)}}" class="btn btn-info btn-sm">Editar</a>
-        
+
                                   <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
                                   value="Borrar">Eliminar</button>
                               </form>

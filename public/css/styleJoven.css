@@ -12,18 +12,19 @@
   scroll-behavior: smooth;
   --pcl: #202126;
   --scl: #fff;
-  --bg: #6465A5;
-  --light-bg:#F3E96B;
-  --lighter-bg:#7d75ef;
-  --dark-bg:#6465A5;
-  --light-color:#eee;
+  --bg: #b2b63c;
+  --light-bg:#ddc79b;
+  --lighter-bg:#b0b645;
+  --dark-bg:#cfaf1e;
+  --light-color:#b8ebd7;
   --border:1px solid rgb(199, 199, 199);
-  --box-shadow:0px 0 20px rgba(23, 23, 23, 0.478);
+  --box-shadow:0px 0 20px rgba(48, 48, 48, 0.478);
   --btn-info-color: #f28a30;
   --btn-del-color: #F05837;
-  --font1: "Open Sans", sans-serif;
+  --font1: "Courier New", monospace;
   --font2: Arial, Helvetica, sans-serif;
-  --font3: "Poppins", sans-serif;
+  --font3: "Constantia", serif;
+
 }
 /*override boostrap*/
 .btn-primary {
@@ -480,7 +481,7 @@ h6 {
   z-index: 997;
   height: 60px;
   box-shadow: var(--box-shadow);
-  background-color: var(--bg); 
+  background-color: var(--bg);
   padding-left: 20px;
   /* Toggle Sidebar Button */
   /* Search Bar */

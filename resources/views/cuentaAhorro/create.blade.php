@@ -21,7 +21,7 @@
                                 <label for="numero_cuenta" class="col-md-4 col-form-label text-md-right">{{ __('Número de Cuenta') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="numero_cuenta" type="text" class="form-control @error('numero_cuenta') is-invalid @enderror" name="numero_cuenta" value="{{ old('numero_cuenta') }}" required autocomplete="Numero de Cuenta" autofocus>
+                                    <input id="numero_cuenta" type="number" class="form-control @error('numero_cuenta') is-invalid @enderror" name="numero_cuenta" value="{{ old('numero_cuenta') }}" required autocomplete="Numero de Cuenta" autofocus>
 
                                     @error('numero_cuenta')
                                         <span class="invalid-feedback" role="alert">
@@ -65,7 +65,7 @@
                                 <label for="interes" class="col-md-4 col-form-label text-md-right">{{ __('Interés') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="interes" type="text" class="form-control @error('interes') is-invalid @enderror" name="interes" value="{{ old('interes') }}" required autocomplete="email">
+                                    <input id="interes" type="number" class="form-control @error('interes') is-invalid @enderror" name="interes" value="{{ old('interes') }}" required autocomplete="email">
 
                                     @error('interes')
                                         <span class="invalid-feedback" role="alert">
