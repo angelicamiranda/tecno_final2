@@ -21,8 +21,8 @@
   --box-shadow:0px 0 20px rgba(23, 23, 23, 0.478);
   --btn-info-color: #d5e135;
   --btn-del-color: #DB39DB;
-  --font1: "Finger Paint", cursive;
-  --font2: "Open Sans", sans-serif;
+  --font1: cursive;
+  --font2:  "Courier New", monospace;
   --font3: "Poppins", sans-serif;
 }
 /*override boostrap*/

@@ -12,10 +12,10 @@
   scroll-behavior: smooth;
   --pcl:#fff;
   --scl: #95dda1;
-  --bg: #333;
+  --bg: #292a29;
   --light-bg:rgb(90, 89, 89);
   --lighter-bg:rgb(112, 112, 112);
-  --dark-bg:#1a1c19ea;
+  --dark-bg:#444743ea;
   --light-color:#eee;
   --border:1px solid rgb(199, 199, 199);
   --box-shadow:0px 0 20px rgba(2, 21, 5, 0.65);

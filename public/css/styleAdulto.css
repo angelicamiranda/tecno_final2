@@ -10,20 +10,20 @@
 --------------------------------------------------------------*/
 :root {
   scroll-behavior: smooth;
-  --pcl: #c2c5d3;
+  --pcl: #202126;
   --scl: #202126;
-  --bg: #3f4f9a;
+  --bg: #c6d3c2;
   --light-bg:rgb(242, 241, 231);
-  --lighter-bg:#758bef;
-  --dark-bg:#A5C6D6;
+  --lighter-bg:#91b774;
+  --dark-bg:#91b774;
   --light-color:#eee;
   --border:1px solid rgb(199, 199, 199);
   --box-shadow:0px 0 20px rgba(23, 23, 23, 0.478);
-  --btn-info-color: #7d89bf;
-  --btn-del-color: rgb(133, 43, 51);
-  --font1: "Open Sans", sans-serif;
-  --font2: Arial, Helvetica, sans-serif;
-  --font3: "Poppins", sans-serif;
+  --btn-info-color: #7dbfbd;
+  --btn-del-color: rgb(166, 33, 44);
+  --font1: small-caps 100%/200% serif
+  --font2:  bold 90% monospace;
+  --font3:  "Constantia", serif;
 }
 /*override boostrap*/
 .btn-primary {
@@ -481,7 +481,7 @@ h6 {
   z-index: 997;
   height: 60px;
   box-shadow: var(--box-shadow);
-  background-color: var(--bg); 
+  background-color: var(--bg);
   padding-left: 20px;
   /* Toggle Sidebar Button */
   /* Search Bar */
