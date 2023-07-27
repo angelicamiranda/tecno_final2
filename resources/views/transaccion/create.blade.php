@@ -4,6 +4,9 @@
 
 @section('content_header')
     <a class="btn btn-secundary" href="{{route('transaccion.index')}}">Volver</a>
+    @if ($mensaje <> '')
+        <h5 style="color: red;"> {{$mensaje}}</h5>
+    @endif
 @stop
 
 @section('content')

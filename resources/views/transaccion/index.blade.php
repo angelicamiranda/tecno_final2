@@ -30,7 +30,7 @@
                 <th scope="col">Nro Cuenta</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Tipo Transacción</th>
-
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
 
@@ -44,16 +44,16 @@
                   <td>{{$transaccione->tipo_transaccion}}</td>
 
                   <td>
-                    {{--  <form action="{{route('users.destroy', $user)}}" method="post">
+                     {{--  <form action="{{route('users.destroy', $user)}}" method="post">
                       @csrf
-                      @method('delete')
-                       {{-- <a class="btn btn-primary btn-sm" href="{{route('users.show',$user)}}">Ver</a> --}}
+                      @method('delete')  --}}
+                       <a class="btn btn-primary btn-sm" href="{{route('transaccion.show',$transaccione->id)}}">Ver</a>
 
-                      {{--  <a href="{{route('users.edit',$user)}}" class="btn btn-info btn-sm">Editar</a>
+                        {{--  <a href="{{route('users.edit',$user)}}" class="btn btn-info btn-sm">Editar</a>  --}}
 
-                      <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
+                      {{--  <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
                       value="Borrar">Eliminar</button>
-                    </form>    --}}
+                    </form>  --}}
                   </td>
                 </tr>
                @endforeach

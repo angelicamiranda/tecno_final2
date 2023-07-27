@@ -24,7 +24,8 @@ class TransaccionController extends Controller
     public function create()
     {
         $cuentas = CuentaAhorro::all();
-        return view('transaccion.create',compact('cuentas'));
+        $mensaje = "";
+        return view('transaccion.create',compact('cuentas', 'mensaje'));
     }
 
     /**
@@ -39,7 +40,8 @@ class TransaccionController extends Controller
         if($trans == 'Egreso'){
             if($monto > $cuenta->monto){
                 $cuentas = CuentaAhorro::all();
-                return view('transaccion.create',compact('cuentas'));
+                $mensaje = 'Error!. La cuenta no tiene suficiente dinero.';
+                return view('transaccion.create',compact('cuentas', 'mensaje'));
             }else {
                 $cuenta->monto = $cuenta->monto - $monto;
             }
@@ -57,7 +59,7 @@ class TransaccionController extends Controller
 
         ]);
         $transaccion->save();
-
+        $cuenta->save();
         return redirect()->route('transaccion.index');
     }
 
@@ -66,7 +68,8 @@ class TransaccionController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $transaccion=Transaccion::findOrFail($id);
+        return view('transaccion.show', compact('transaccion'));
     }
 
     /**

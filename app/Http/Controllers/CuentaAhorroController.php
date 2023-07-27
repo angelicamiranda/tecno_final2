@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\CuentaAhorro;
-use Facade\FlareClient\Http\Client;
 use Illuminate\Http\Request;
 
 class CuentaAhorroController extends Controller
