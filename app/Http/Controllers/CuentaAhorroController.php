@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use App\Models\CuentaAhorro;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class CuentaAhorroController extends Controller
      */
     public function create()
     {
-        //
+        $clientes = Cliente::get();
+        return view('cuentaAhorro.create',compact('clientes'));
     }
 
     /**
@@ -29,7 +31,24 @@ class CuentaAhorroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'numero_cuenta' => 'numeric|unique:cuenta_ahorro',
+
+        ]);
+        $cuenta=CuentaAhorro::create([
+            'numero_cuenta' => $request['numero_cuenta'],
+            'fecha_apertura' => $request['fecha_apertura'],
+            'tipo_moneda' => $request['tipo_moneda'],
+            'interes' => $request['interes'],
+            'cliente_id' => $request['cliente_id'],
+
+        ]);
+
+        $cuenta->monto = 0;
+        $cuenta->save();
+
+        return redirect()->route('cuentaAhorro.index');
+
     }
 
     /**

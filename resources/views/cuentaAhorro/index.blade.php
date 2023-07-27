@@ -1,6 +1,6 @@
 @extends('plantilla.app')
 
-@section('title', 'Servicios')
+@section('title', 'Cuentas')
 
 @section('content_header')
     <h1>LISTA DE CUENTAS DE AHORRO</h1>
@@ -8,7 +8,7 @@
 
 @section('content')
 
-        <a href="{{ route('users.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Cuenta de Ahorro</a>
+        <a href="{{ route('cuentaAhorro.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Cuenta de Ahorro</a>
 
 
     @if (session('error'))
