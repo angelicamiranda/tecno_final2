@@ -16,13 +16,15 @@ class Credito extends Model
         'dia_desembolso',
         'periodo_gracia',
         'cargo_adicional',
-        'monto_mensual',
-        'total_monto_mensual',
-        'monto_final',
+        'montomensual',
+        'totalmontomensual',
+        'montofinal',
         'estado',
         'tasa_interes_id',
         'cliente_id'
     ];
+
+    public $timestamps = false;
 
     public function cuota()
     {

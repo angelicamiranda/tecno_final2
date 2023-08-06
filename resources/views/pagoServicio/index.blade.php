@@ -8,7 +8,7 @@
 
 @section('content')
 
-        <a href="{{ route('users.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Pago de Servicio</a>
+        <a href="{{ route('pagoServicio.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Pago de Servicio</a>
 
 
     @if (session('error'))
@@ -43,16 +43,16 @@
                   <td>{{$pago->fecha}}</td>
                   <td>{{$pago->usuario->nombre}}</td>
                   <td>
-                    {{--  <form action="{{route('users.destroy', $user)}}" method="post">
+                     <form action="{{route('pagoServicio.destroy', $pago)}}" method="post">
                       @csrf
                       @method('delete')
-                       {{-- <a class="btn btn-primary btn-sm" href="{{route('users.show',$user)}}">Ver</a> --}}
+                       {{-- <a class="btn btn-primary btn-sm" href="{{route('pagoServicio.show',$pago)}}">Ver</a> --}}
 
-                      {{--  <a href="{{route('users.edit',$user)}}" class="btn btn-info btn-sm">Editar</a>
+                      <a href="{{route('pagoServicio.edit',$pago)}}" class="btn btn-info btn-sm">Editar</a>
 
                       <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
                       value="Borrar">Eliminar</button>
-                    </form>    --}}
+                    </form>
                   </td>
                 </tr>
                @endforeach

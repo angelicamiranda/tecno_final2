@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cliente;
 use App\Models\CuentaAhorro;
 use Illuminate\Http\Request;
+use App\Models\Transaccion;
 
 class CuentaAhorroController extends Controller
 {
@@ -21,7 +23,8 @@ class CuentaAhorroController extends Controller
      */
     public function create()
     {
-        //
+        $clientes = Cliente::get();
+        return view('cuentaAhorro.create',compact('clientes'));
     }
 
     /**
@@ -29,7 +32,24 @@ class CuentaAhorroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'numero_cuenta' => 'numeric|unique:cuenta_ahorro',
+
+        ]);
+        $cuenta=CuentaAhorro::create([
+            'numero_cuenta' => $request['numero_cuenta'],
+            'fecha_apertura' => $request['fecha_apertura'],
+            'tipo_moneda' => $request['tipo_moneda'],
+            'interes' => $request['interes'],
+            'cliente_id' => $request['cliente_id'],
+
+        ]);
+
+        $cuenta->monto = 0;
+        $cuenta->save();
+
+        return redirect()->route('cuentaAhorro.index');
+
     }
 
     /**
@@ -37,7 +57,8 @@ class CuentaAhorroController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $cuentaAhorro=CuentaAhorro::findOrFail($id);
+        return view('cuentaAhorro.show', compact('cuentaAhorro'));
     }
 
     /**
@@ -62,5 +83,12 @@ class CuentaAhorroController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    public function movimientos(CuentaAhorro $cuentaAhorro)
+    {
+        $transacciones = Transaccion::where('cuenta_ahorro_id', $cuentaAhorro->id)->get();
+        return view('transaccion.index', compact('transacciones'));
     }
 }

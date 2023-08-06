@@ -5,11 +5,10 @@
 
 @section('content_header')
     <h1>LISTA DE CLIENTES</h1>
-@stopS
-
+@endsection
 @section('content')
 
-        <a href="{{ route('users.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Cliente</a>
+        <a href="{{ route('cliente.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Cliente</a>
 
 
     @if (session('error'))
@@ -39,28 +38,24 @@
             <tbody>
                 @foreach ($clientes as $cliente)
                     <tr>
-                        <td>{{ $cliente->id }}</td>
-                        <td>{{ $cliente->nombre }}</td>
-                        <td>{{ $cliente->ci }}</td>
-                        <td>{{ $cliente->lugar_nac }}</td>
-                        <td>{{ $cliente->estado_civil}}</a></td>
-                        <td>{{ $cliente->nacionalidad }}</td>
+                        <td>{{($cliente->id == null)? "--": $cliente->id }}</td>
+                        <td>{{($cliente->nombre == null)? "--": $cliente->nombre }}</td>
+                        <td>{{($cliente->ci == null)? "--": $cliente->ci }}</td>
+                        <td>{{ ($cliente->lugar_nac == null)? "--":$cliente->lugar_nac }}</td>
+                        <td>{{ ($cliente->estado_civil == null)? "--":$cliente->estado_civil}}</a></td>
+                        <td>{{ ($cliente->nacionalidad == null)? "--":$cliente->nacionalidad }}</td>
 
                         <td class="d-flex justify-content-center">
-                            /*@can('cliente.edit')
-                                <a href="{{ route('cliente.edit', $cliente) }}"
-                                    class="btn btn-info btn-sm mx-1">Editar</a>
-                            @endcan
-                            @can('cliente.destroy')
-                                <form action="{{ route('cliente.destroy', $cliente) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-danger btn-sm mx-1"
-                                        onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
-                                        value="Borrar">Eliminar</button>
-                                </form>
-                            @endcan
-                            */
+                            <form action="{{route('cliente.destroy', $cliente)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                {{-- <a class="btn btn-primary btn-sm" href="{{route('cleintes.show',$cleinte)}}">Ver</a> --}}
+
+                                  <a href="{{route('cliente.edit',$cliente)}}" class="btn btn-info btn-sm">Editar</a>
+
+                                  <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
+                                  value="Borrar">Eliminar</button>
+                              </form>
                         </td>
                     </tr>
                 @endforeach

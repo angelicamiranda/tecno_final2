@@ -17,6 +17,9 @@ class PagoServicio extends Model
         'usuario_id',
         'servicio_id'
     ];
+
+    public $timestamps = false;
+    protected $guarded = ['updated_at', 'created_at'];
     public function usuario(){
         return $this->belongsTo('App\Models\User','usuario_id','id');
     }

@@ -16,6 +16,8 @@ class Transaccion extends Model
         'condicion',
         'cuenta_ahorro_id'
     ];
+    public $timestamps = false;
+    protected $guarded = ['updated_at', 'created_at'];
 
     public function cuenta_ahorro(){
         return $this->belongsTo('App\Models\CuentaAhorro','cuenta_ahorro_id','id');

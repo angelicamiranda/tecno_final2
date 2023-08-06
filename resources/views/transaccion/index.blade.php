@@ -8,7 +8,7 @@
 
 @section('content')
 
-        <a href="{{ route('users.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Transacción</a>
+        <a href="{{ route('transaccion.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Transacción</a>
 
 
     @if (session('error'))
@@ -30,30 +30,30 @@
                 <th scope="col">Nro Cuenta</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Tipo Transacción</th>
-
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
 
              <tbody>
               @foreach ($transacciones as $transaccione)
                 <tr>
-                  <td>{{$transaccione->id}}</td>
-                  <td>{{$transaccione->cuenta_ahorro->cliente->nombre}}</td>
-                  <td>{{$transaccione->cuenta_ahorro->numero_cuenta}}</td>
-                  <td>{{$transaccione->fecha}}</td>
-                  <td>{{$transaccione->tipo_transaccion}}</td>
+                  <td>{{($transaccione->id == null)? "--":$transaccione->id}}</td>
+                  <td>{{($transaccione->cuenta_ahorro_id == null)? "--":$transaccione->cuenta_ahorro->cliente->nombre}}</td>
+                  <td>{{($transaccione->cuenta_ahorro_id == null)? "--":$transaccione->cuenta_ahorro->numero_cuenta}}</td>
+                  <td>{{($transaccione->fecha == null)? "--":$transaccione->fecha}}</td>
+                  <td>{{($transaccione->tipo_transaccion == null)? "--":$transaccione->tipo_transaccion}}</td>
 
                   <td>
-                    {{--  <form action="{{route('users.destroy', $user)}}" method="post">
+                     {{--  <form action="{{route('users.destroy', $user)}}" method="post">
                       @csrf
-                      @method('delete')
-                       {{-- <a class="btn btn-primary btn-sm" href="{{route('users.show',$user)}}">Ver</a> --}}
+                      @method('delete')  --}}
+                      <a class="btn btn-primary btn-sm" href="{{route('transaccion.show',$transaccione->id)}}">Ver</a>
 
-                      {{--  <a href="{{route('users.edit',$user)}}" class="btn btn-info btn-sm">Editar</a>
+                        {{--  <a href="{{route('users.edit',$user)}}" class="btn btn-info btn-sm">Editar</a>  --}}
 
-                      <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
+                      {{--  <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
                       value="Borrar">Eliminar</button>
-                    </form>    --}}
+                    </form>  --}}
                   </td>
                 </tr>
                @endforeach

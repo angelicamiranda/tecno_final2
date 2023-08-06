@@ -14,9 +14,13 @@ class CuentaAhorro extends Model
         'fecha_apertura',
         'tipo_moneda',
         'monto',
+        'interes',
         'condicion',
         'cliente_id'
     ];
+
+    public $timestamps = false;
+    protected $guarded = ['updated_at', 'created_at'];
 
     public function transaccion()
     {

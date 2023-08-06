@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>@yield('title', 'FICH')</title>
+    <title>@yield('title', 'CRECER - IFD')</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <!-- font awesome cdn link  -->
@@ -35,7 +35,7 @@
     @yield('css')
     <script>
         let stylesheet = document.getElementById("stylesheet");
-        if(localStorage.filecss !== null ){
+        if(localStorage.filecss != null ){
             if(stylesheet.href!== localStorage.filecss){
             stylesheet.href= localStorage.filecss;
             }

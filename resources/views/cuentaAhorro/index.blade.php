@@ -1,6 +1,6 @@
 @extends('plantilla.app')
 
-@section('title', 'Servicios')
+@section('title', 'Cuentas')
 
 @section('content_header')
     <h1>LISTA DE CUENTAS DE AHORRO</h1>
@@ -8,7 +8,7 @@
 
 @section('content')
 
-        <a href="{{ route('users.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Cuenta de Ahorro</a>
+        <a href="{{ route('cuentaAhorro.create') }}"class="btn btn-primary btb-sm my-4"> Registrar Cuenta de Ahorro</a>
 
 
     @if (session('error'))
@@ -28,26 +28,27 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nro Cuenta</th>
                 <th scope="col">Cliente</th>
-
+                <th scope="col">Tipo de Moneda</th>
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
 
              <tbody>
               @foreach ($cuentas as $cuenta)
                 <tr>
-                  <td>{{$cuenta->id}}</td>
-                  <td>{{$cuenta->numero_cuenta}}</td>
-                  <td>{{$cuenta->cliente->nombre}}</td>
-
+                  <td>{{($cuenta->id == null)? "--": $cuenta->id}}</td>
+                  <td>{{($cuenta->numero_cuenta == null)? "--":$cuenta->numero_cuenta}}</td>
+                  <td>{{($cuenta->nombre == null)? "--":$cuenta->cliente->nombre}}</td>
+                  <td>{{($cuenta->tipo_moneda == null)? "--":$cuenta->tipo_moneda}}</td>
                   <td>
-                    {{--  <form action="{{route('users.destroy', $user)}}" method="post">
+                      {{--  <form action="{{route('users.destroy', $user)}}" method="post">
                       @csrf
-                      @method('delete')
-                       {{-- <a class="btn btn-primary btn-sm" href="{{route('users.show',$user)}}">Ver</a> --}}
+                      @method('delete')  --}}
+                       <a class="btn btn-primary btn-sm" href="{{route('cuentaAhorro.show',$cuenta->id)}}">Ver</a>
 
-                      {{--  <a href="{{route('users.edit',$user)}}" class="btn btn-info btn-sm">Editar</a>
+                      <a href="{{route('cuentaAhorro.edit',$cuenta)}}" class="btn btn-info btn-sm">Editar</a>
 
-                      <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
+                      {{--  <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
                       value="Borrar">Eliminar</button>
                     </form>    --}}
                   </td>

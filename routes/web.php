@@ -10,10 +10,14 @@ use App\Http\Controllers\CertificadoController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CreditoController;
 use App\Http\Controllers\CuentaAhorroController;
+use App\Http\Controllers\CuotaController;
 use App\Http\Controllers\PagoServicioController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\TasaInteresController;
 use App\Http\Controllers\TransaccionController;
+use App\Models\CuentaAhorro;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +42,14 @@ Route::resource('servicio', ServicioController::class)->names('servicio');
 Route::resource('pagoServicio', PagoServicioController::class)->names('pagoServicio');
 Route::resource('cuentaAhorro', CuentaAhorroController::class)->names('cuentaAhorro');
 Route::resource('transaccion', TransaccionController::class)->names('transaccion');
+Route::resource('tasaInteres', TasaInteresController::class)->names('tasaInteres');
+Route::resource('credito', CreditoController::class)->names('credito');
+Route::resource('cuota', CuotaController::class)->names('cuota');
+Route::get('cuentaAhorro/movimientos/{cuentaAhorro}',[CuentaAhorroController::class,'movimientos'])->name('cuentaAhorro.movimientos');
+Route::get('credito/cuotas/{credito}',[CreditoController::class,'cuotas'])->name('credito.cuotas');
 
+Route::get('credito/estadoview/{credito}',[CreditoController::class,'estadoview'])->name('credito.estadoview');
+Route::patch('credito/estado/{credito}',[CreditoController::class,'estado'])->name('credito.estado');
 // Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 //   Route::group(['prefix'=> 'usuarios'], function () {
 //         Route::get('profile',[UserController::class,'show2'])->name('user.show');

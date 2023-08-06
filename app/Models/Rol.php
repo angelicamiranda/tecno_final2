@@ -9,6 +9,9 @@ class Rol extends Model
 {
     use HasFactory;
 
-    protected $table="p2_roles";
+    protected $table="rol";
     protected $guarded=['id'];
+    protected $fillable = [ //atributos de la tabla
+        'nombre'
+    ];
 }

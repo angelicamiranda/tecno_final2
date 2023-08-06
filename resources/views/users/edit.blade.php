@@ -26,20 +26,30 @@
                 @method('PATCH')
 
                 <div class="form-group col-md-6 my-3">
-                    <label for="name"><b>Nombre de usuario</b></label>
-                    <input name="name" type="text" class="form-control" value="{{ old('name', $user->name) }}"
-                        id="name">
-                    @error('name')
+                    <label for="nombre"><b>Nombre de usuario</b></label>
+                    <input name="nombre" type="text" class="form-control" value="{{ old('nombre', $user->nombre) }}"
+                        id="nombre">
+                    @error('nombre')
                         <small>{{ $message }}</small>
                         <br><br>
                     @enderror
                 </div>
 
                 <div class="form-group col-md-6 my-3">
-                    <label for="check_password"><b>Nueva contraseña</b></label>
-                    <input type="password" name="password" class="form-control" value="{{ old('password') }}"
-                        id="passwordInput" placeholder="Escriba si modificara ">
-                    @error('password')
+                    <label for="ci"><b>Carnet del usuario</b></label>
+                    <input name="ci" type="text" class="form-control" value="{{ old('ci', $user->ci) }}"
+                        id="ci">
+                    @error('ci')
+                        <small>{{ $message }}</small>
+                        <br><br>
+                    @enderror
+                </div>
+
+                <div class="form-group col-md-6 my-3">
+                    <label for="nombre"><b>Cargo de usuario</b></label>
+                    <input name="cargo" type="text" class="form-control" value="{{ old('cargo', $user->cargo) }}"
+                        id="cargo">
+                    @error('cargo')
                         <small>{{ $message }}</small>
                         <br><br>
                     @enderror
@@ -56,12 +66,25 @@
                 </div>
 
                 <div class="form-group col-md-6 my-3">
+                    <label for="check_password"><b>Nueva contraseña</b></label>
+                    <input type="password" name="password" class="form-control" value="{{ old('password') }}"
+                        id="passwordInput" placeholder="Escriba si modificara ">
+                    @error('password')
+                        <small>{{ $message }}</small>
+                        <br><br>
+                    @enderror
+                </div>
+
+                <div class="form-group col-md-6 my-3">
                     <label for="name"><b>Seleccione un Rol</b></label>
-                    <select name="roles" class="form-control col-md-6" id="select-roles">
-                        <option value="{{ $user->rol_id() }}">{{ $user->rol_name() }}</option>
-                        @foreach ($roles as $role)
-                            <option value="{{ $role->id }}">{{ $role->name }}</option>
-                        @endforeach
+                    <select name="rol_id" class="form-control col-md-6" id="rol_id">
+                        @foreach ($roles as $rol)
+                        @if ($user->rol_id == $rol->id)
+                            <option selected value="{{$rol->id}}">{{$rol->nombre}}</option>
+                        @else
+                            <option value="{{$rol->id}}">{{$rol->nombre}}</option>
+                        @endif
+                    @endforeach
                     </select>
                 </div>
 
