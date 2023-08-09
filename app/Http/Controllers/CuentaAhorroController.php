@@ -33,17 +33,25 @@ class CuentaAhorroController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'numero_cuenta' => 'numeric|unique:cuenta_ahorro',
-
+            'fecha_apertura' => 'required|date',
+            'tipo_moneda' => 'required',
+            'fecha_apertura' => 'required'
         ]);
         $cuenta=CuentaAhorro::create([
-            'numero_cuenta' => $request['numero_cuenta'],
+
             'fecha_apertura' => $request['fecha_apertura'],
             'tipo_moneda' => $request['tipo_moneda'],
             'interes' => $request['interes'],
             'cliente_id' => $request['cliente_id'],
 
         ]);
+
+        $numerodecuenta = str_pad($cuenta->id, 4, '0', STR_PAD_LEFT);
+        if($request->tipo_moneda == 'Bolivianos'){
+            $cuenta->nro_cuenta = '1051 - ' . $numerodecuenta;
+        }else{
+            $cuenta->nro_cuenta = '1052 - '.$numerodecuenta;
+        }
 
         $cuenta->monto = 0;
         $cuenta->save();
@@ -66,7 +74,9 @@ class CuentaAhorroController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $clientes = Cliente::get();
+        $cuenta = CuentaAhorro::findOrFail($id);
+        return view('cuentaAhorro.edit',compact('cuenta','clientes'));
     }
 
     /**
@@ -74,7 +84,23 @@ class CuentaAhorroController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+      
+        $cuenta = CuentaAhorro::findOrFail($id);
+        $cuenta->fecha_apertura = $request->fecha_apertura;
+        $cuenta->tipo_moneda = $request->tipo_moneda;
+        $cuenta->interes = $request->interes;
+        $cuenta->cliente_id = $request->cliente_id;
+        $numerodecuenta = str_pad($cuenta->id, 4, '0', STR_PAD_LEFT);
+        if($request->tipo_moneda == 'Bolivianos'){
+            $cuenta->nro_cuenta = '1051 - ' . $numerodecuenta;
+        }else{
+            $cuenta->nro_cuenta = '1052 - '.$numerodecuenta;
+        }
+        $cuenta->save();
+
+
+        return redirect()->route('cuentaAhorro.index');
+
     }
 
     /**

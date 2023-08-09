@@ -64,8 +64,8 @@
                                 <label for="tipo_transaccion" class="col-md-4 col-form-label text-md-right">{{ __('Tipo de Tansacción') }}</label>
                                 <div class="col-md-6">
                                         <select name="tipo_transaccion" class="form-control" id="tipo_transaccion" >
-                                                    <option value="Ingreso">Ingreso - Depósito</option>
-                                                    <option value="Egreso">Egreso - Retiro</option>
+                                                    <option value="Depósito">Ingreso - Depósito</option>
+                                                    <option value="Retiro">Egreso - Retiro</option>
                                         </select>
 
                                     @error('tipo_transaccion')

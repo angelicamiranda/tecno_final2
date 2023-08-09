@@ -10,12 +10,12 @@ class CuentaAhorro extends Model
     use HasFactory;
     protected $table = 'cuenta_ahorro'; //usa el nombre de la base de datos
     protected $fillable = [ //atributos de la tabla
-        'numero_cuenta',
         'fecha_apertura',
         'tipo_moneda',
         'monto',
         'interes',
         'condicion',
+        'nro_cuenta',
         'cliente_id'
     ];
 

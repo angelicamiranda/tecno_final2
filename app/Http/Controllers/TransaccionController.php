@@ -37,7 +37,7 @@ class TransaccionController extends Controller
         $monto = $request->monto;
         $cuenta = CuentaAhorro::find($request->cuenta_ahorro_id);
         $trans = $request->tipo_transaccion;
-        if($trans == 'Egreso'){
+        if($trans == 'Retiro'){
             if($monto > $cuenta->monto){
                 $cuentas = CuentaAhorro::all();
                 $mensaje = 'Error!. La cuenta no tiene suficiente dinero.';

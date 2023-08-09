@@ -38,7 +38,7 @@
                   </tr>
                   <tr>
                     <th>Número de la Cuenta </th>
-                    <td>{{ $cuentaAhorro->numero_cuenta }}</td>
+                    <td>{{ $cuentaAhorro->nro_cuenta }}</td>
                   </tr>
 
                   <tr>

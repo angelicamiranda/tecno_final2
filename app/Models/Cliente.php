@@ -22,13 +22,15 @@ class Cliente extends Model
         'direccion_domicilio',
         'direccion_trabajo',
         'tipo_tenencia_dom',
-        'tipo_tenecial_trab',
+        'tipo_tenencia_trab',
         'ingreso_prom_mensual',
         'condicion',
         'usuario_id',
     ];
 
 
+    public $timestamps = false;
+    protected $guarded = ['updated_at', 'created_at'];
     public function cuenta_ahorro()
     {
         return $this->hasMany('App\Models\CuentaAhorro','cliente_id','id');

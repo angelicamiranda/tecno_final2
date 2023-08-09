@@ -25,7 +25,7 @@
             <thead>
 
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">Código</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Carnet de Identidad</th>
                     <th scope="col">Lugar de Nacimiento</th>
@@ -38,7 +38,7 @@
             <tbody>
                 @foreach ($clientes as $cliente)
                     <tr>
-                        <td>{{($cliente->id == null)? "--": $cliente->id }}</td>
+                        <td>{{($cliente->id == null)? "--":  str_pad($cliente->id, 4, '0', STR_PAD_LEFT) }}</td>
                         <td>{{($cliente->nombre == null)? "--": $cliente->nombre }}</td>
                         <td>{{($cliente->ci == null)? "--": $cliente->ci }}</td>
                         <td>{{ ($cliente->lugar_nac == null)? "--":$cliente->lugar_nac }}</td>
@@ -49,7 +49,7 @@
                             <form action="{{route('cliente.destroy', $cliente)}}" method="post">
                                 @csrf
                                 @method('delete')
-                                {{-- <a class="btn btn-primary btn-sm" href="{{route('cleintes.show',$cleinte)}}">Ver</a> --}}
+                                 <a class="btn btn-primary btn-sm" href="{{route('cliente.show',$cliente)}}">Ver</a>
 
                                   <a href="{{route('cliente.edit',$cliente)}}" class="btn btn-info btn-sm">Editar</a>
 

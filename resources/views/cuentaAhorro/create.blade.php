@@ -17,19 +17,7 @@
                         <form method="POST" action="{{ route('cuentaAhorro.store') }}">
                             @csrf
 
-                            <div class="form-group row my-3">
-                                <label for="numero_cuenta" class="col-md-4 col-form-label text-md-right">{{ __('Número de Cuenta') }}</label>
 
-                                <div class="col-md-6">
-                                    <input id="numero_cuenta" type="number" class="form-control @error('numero_cuenta') is-invalid @enderror" name="numero_cuenta" value="{{ old('numero_cuenta') }}" required autocomplete="Numero de Cuenta" autofocus>
-
-                                    @error('numero_cuenta')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
 
                             <div class="form-group row my-3">
                                 <label for="fecha_apertura" class="col-md-4 col-form-label text-md-right">{{ __('Fecha de Apertura') }}</label>
@@ -83,7 +71,7 @@
                                 <div class="col-md-6">
                                     <select name="cliente_id" class="form-control" id="cliente_id" >
                                             @foreach ($clientes as $cliente)
-                                                <option value="{{ $cliente->id }}">{{ $cliente->nombre}}</option>
+                                                <option value="{{ $cliente->id }}">{{ str_pad($cliente->id, 4, '0', STR_PAD_LEFT) }}</option>
                                             @endforeach
                                     </select>
                                 </div>
