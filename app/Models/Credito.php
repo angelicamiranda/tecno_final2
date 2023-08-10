@@ -11,7 +11,7 @@ class Credito extends Model
     protected $table = 'credito'; //usa el nombre de la base de datos
     protected $fillable = [ //atributos de la tabla
         'monto',
-        'motivo',
+        'destino',
         'plazo',
         'dia_desembolso',
         'periodo_gracia',
@@ -21,7 +21,9 @@ class Credito extends Model
         'montofinal',
         'estado',
         'tasa_interes_id',
-        'cliente_id'
+        'cliente_id',
+        'tipo',
+        'forma_pago'
     ];
 
     public $timestamps = false;

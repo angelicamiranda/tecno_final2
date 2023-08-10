@@ -28,14 +28,33 @@
 
 
 
-
+                <div class="form-group col-md-6 my-3">
+                    <label for="dia_desembolso"><b>Desembolso del crédito</b></label>
+                    <input name="dia_desembolso" type="date" class="form-control" value="{{ old('dia_desembolso') }}" required
+                        id="dia_desembolso">
+                    @error('dia_desembolso')
+                        <small>{{ $message }}</small>
+                        <br><br>
+                    @enderror
+                </div>
                 <div class="form-group col-md-6 my-3">
                     <label for="estado"><b>Seleccione un Estado</b></label>
-                    <select name="estado" class="form-control col-md-6" id="estado">
+                    <select name="estado" class="form-control col-md-6" id="estado" value="{{ old('estado', $credito->estado) }}">
+                        @if ($credito->estado == 'Solicitado')
+                                <option selected value="Aprobado">Aprobar</option>
 
-                            <option selected value="Aceptado">Aceptar</option>
+                                <option value="Rechazado">Rechazar</option>
+                        @endif
+                        @if ($credito->estado == 'Aprobado')
+                                <option selected value="Aprobado">Aprobar</option>
+                        @endif
 
-                            <option value="Rechazado">Rechazar</option>
+                        @if ($credito->estado == 'Rechazado')
+                                <option value="Rechazado">Rechazar</option>
+                        @endif
+
+
+
 
                     </select>
                 </div>

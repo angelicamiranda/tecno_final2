@@ -27,7 +27,7 @@
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Cliente</th>
-                <th scope="col">Motivo</th>
+                <th scope="col">Destino del Crédito</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Acciones</th>
               </tr>
@@ -38,7 +38,7 @@
                 <tr>
                   <td>{{$cuota->id}}</td>
                   <td>{{$cuota->credito->cliente->nombre}}</td>
-                  <td>{{$cuota->credito->motivo}}</td>
+                  <td>{{$cuota->credito->destino}}</td>
                   <td>{{$cuota->fecha}}</td>
                   <td>
                     <a class="btn btn-primary btn-sm" href="{{route('cuota.show',$cuota)}}">Ver</a>

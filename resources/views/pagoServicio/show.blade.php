@@ -3,7 +3,7 @@
 @section('title', 'Ver Transacción')
 
 @section('content_header')
-    <h1>DETALLE DE LA TRANSACCIÓN</h1>
+    <h1>DETALLE DE LA PAGOS DE SERVICIOS</h1>
 @stop
 
 @section('content')
@@ -22,8 +22,6 @@
     <div class="card">
         <div class="card-body">
 
-
-
             <table class="table table-bordered table-striped">
                 <tbody>
                   <tr>
@@ -33,36 +31,31 @@
                   </td>
                   </tr>
                   <tr>
-                    <th>Nombre del cliente</th>
-                    <td>{{ $transaccion->cuenta_ahorro->cliente->nombre }}</td>
+                    <th>Código del cliente</th>
+                    <td>{{ $pago->codigo_cliente}}</td>
                   </tr>
                   <tr>
-                    <th>Número de la Cuenta </th>
-                    <td>{{ $transaccion->cuenta_ahorro->nro_cuenta }}</td>
+                    <th>Monto  </th>
+                    <td>{{ $pago->monto }}</td>
                   </tr>
 
                   <tr>
-                    <th>Fecha de Transacción</th>
-                    <td>{{ $transaccion->fecha }}</td>
+                    <th> Fecha del Pago</th>
+                    <td>{{ $pago->fecha }}</td>
                   </tr>
                   <tr>
-                      <th>Monto</th>
+                      <th>Empleado Encargado</th>
                       <td>
-                      {{ $transaccion->monto }}
+                      {{ $pago->usuario->nombre }}
                       </td>
                   </tr>
                   <tr>
-                      <th>Tipo de Moneda</th>
+                      <th>Servicio</th>
                       <td>
-                      {{ $transaccion->cuenta_ahorro->tipo_moneda }}
+                      {{ $pago->servicio->nombre }}
                       </td>
                   </tr>
-                  <tr>
-                    <th>Tipo de Transacción</th>
-                    <td>
-                    {{ $transaccion->tipo_transaccion }}
-                    </td>
-                </tr>
+
                 </tbody>
               </table>
 

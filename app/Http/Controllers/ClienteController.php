@@ -88,10 +88,11 @@ class ClienteController extends Controller
         $cliente->nivel_educacion = $request->nivel_educacion;
         $cliente->direccion_domicilio = $request->direccion_domicilio;
         $cliente->direccion_trabajo = $request->direccion_trabajo;
-        $cliente->tipo_tenencia_dom = $request->tipo_tenecia_dom;
+        $cliente->tipo_tenencia_dom = $request->tipo_tenencia_dom;
         $cliente->tipo_tenencia_trab = $request->tipo_tenencia_trab;
         $cliente->ingreso_prom_mensual = $request->ingreso_prom_mensual;
         $cliente->save();
+        return view('cliente.show', compact('cliente'));
     }
 
     /**

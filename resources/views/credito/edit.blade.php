@@ -21,7 +21,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="post" action="{{ route('credito.update', $credito) }}">
+            <form method="post" action="{{ route('credito.update', $credito->id) }}">
                 @csrf
                 @method('PATCH')
 
@@ -36,10 +36,10 @@
                 </div>
 
                 <div class="form-group col-md-6 my-3">
-                    <label for="motivo"><b>Motivo del crédito</b></label>
-                    <input name="motivo" type="text" class="form-control" value="{{ old('motivo', $credito->motivo) }}" required"
-                        id="motivo">
-                    @error('motivo')
+                    <label for="destino"><b>Destino del crédito</b></label>
+                    <input name="destino" type="text" class="form-control" value="{{ old('destino', $credito->destino) }}" required
+                        id="destino">
+                    @error('destino')
                         <small>{{ $message }}</small>
                         <br><br>
                     @enderror
@@ -47,7 +47,7 @@
 
                 <div class="form-group col-md-6 my-3">
                     <label for="plazo"><b>Plazo del crédito en meses</b></label>
-                    <input name="plazo" type="number" step="1" max="50" class="form-control" value="{{ old('plazo', $credito->plazo) }}" required"
+                    <input name="plazo" type="number" step="1" max="50" class="form-control" value="{{ old('plazo', $credito->plazo) }}" required
                         id="plazo">
                     @error('plazo')
                         <small>{{ $message }}</small>
@@ -57,7 +57,7 @@
 
                 <div class="form-group col-md-6 my-3">
                     <label for="dia_desembolso"><b>Desembolso del crédito</b></label>
-                    <input name="dia_desembolso" type="date" class="form-control" value="{{ old('dia_desembolso', $credito->dia_desembolso) }}" required"
+                    <input name="dia_desembolso" type="date" class="form-control" value="{{ old('dia_desembolso', $credito->dia_desembolso) }}" required
                         id="dia_desembolso">
                     @error('dia_desembolso')
                         <small>{{ $message }}</small>
@@ -67,7 +67,7 @@
 
                 <div class="form-group col-md-6 my-3">
                     <label for="periodo_gracia"><b>Periodo de Gracia del crédito</b></label>
-                    <input name="periodo_gracia" type="text" class="form-control" value="{{ old('periodo_gracia', $credito->periodo_gracia) }}" required"
+                    <input name="periodo_gracia" type="text" class="form-control" value="{{ old('periodo_gracia', $credito->periodo_gracia) }}" required
                         id="periodo_gracia">
                     @error('periodo_gracia')
                         <small>{{ $message }}</small>
@@ -77,7 +77,7 @@
 
                 <div class="form-group col-md-6 my-3">
                     <label for="cargo_adicional"><b>Cargo Adicional del crédito</b></label>
-                    <input name="cargo_adicional" type="number" step="0.50" max="99999.50" class="form-control" value="{{ old('cargo_adicional', $credito->cargo_adicional) }}" required"
+                    <input name="cargo_adicional" type="number" step="0.50" max="99999.50" class="form-control" value="{{ old('cargo_adicional', $credito->cargo_adicional) }}" required
                         id="cargo_adicional">
                     @error('cargo_adicional')
                         <small>{{ $message }}</small>
@@ -86,15 +86,26 @@
                 </div>
 
                 <div class="form-group col-md-6 my-3">
-                    <label for="name"><b>Seleccione una Tasa de Interés</b></label>
-                    <select name="tasa_interes_id" class="form-control col-md-6" id="tasa_interes_id">
-                        @foreach ($tasas as $tasa)
-                        @if ($credito->tasa_interes_id == $tasa->id)
-                        <option selected value="{{$tasa->id}}">{{$tasa->descripcion}} - {{$tasa->porcentaje}}</option>
-                        @else
-                            <option value="{{$tasa->id}}">{{$tasa->descripcion}} - {{$tasa->porcentaje}}</option>
-                        @endif
-                        @endforeach
+                    <label for="name"><b>Seleccione un Tipo de Crédito</b></label>
+                    <select name="tipo" class="form-control col-md-6" id="tipo" value="{{ old('tipo', $credito->tipo) }}">
+
+                            <option value="Banca Comunal">Banca Comunal</option>
+                            <option value="Salud">Salud</option>
+                            <option value="Educativo">Educativo</option>
+                            <option value="Agropecuario">Agropecuario</option>
+                            <option value="Comercial">Comercial</option>
+                            <option value="Consumo">Consumo</option>
+                            <option value="Vivienda">Vivienda</option>
+                    </select>
+                </div>
+
+
+                <div class="form-group col-md-6 my-3">
+                    <label for="name"><b>Seleccione una Forma de Pago</b></label>
+                    <select name="forma_pago" class="form-control col-md-6" id="forma_pago" value="{{ old('forma_pago', $credito->forma_pago) }}">
+                            <option value="Mensual">Mensual</option>
+                            <option value="Anual">Anual</option>
+
                     </select>
                 </div>
 

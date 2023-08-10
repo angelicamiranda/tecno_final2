@@ -77,30 +77,28 @@
 
                 <div class="form-group col-md-6 my-3">
                     <label for="name"><b>Seleccione un Tipo de Crédito</b></label>
-                    <select name="tipo_credito" class="form-control col-md-6" id="tasa_interes_id">
+                    <select name="tipo" class="form-control col-md-6" id="tipo">
 
                             <option value="Banca Comunal">Banca Comunal</option>
                             <option value="Salud">Salud</option>
                             <option value="Educativo">Educativo</option>
-                            <option value="Agropecuario">Agropecuario</option>
                             <option value="Agropecuario">Agropecuario</option>
                             <option value="Comercial">Comercial</option>
                             <option value="Consumo">Consumo</option>
                             <option value="Vivienda">Vivienda</option>
                     </select>
                 </div>
+
+
                 <div class="form-group col-md-6 my-3">
                     <label for="name"><b>Seleccione una Forma de Pago</b></label>
                     <select name="forma_pago" class="form-control col-md-6" id="tasa_interes_id">
                             <option value="Mensual">Mensual</option>
-                            <option value="Bimensual">Bimensual</option>
-                            <option value="Trimestral">Trimestral</option>
-                            <option value="Semestral">Semestral</option>
                             <option value="Anual">Anual</option>
 
                     </select>
                 </div>
-                
+
 
                 <div class="form-group col-md-6 my-3">
                     <label for="name"><b>Seleccione un Cliente</b></label>

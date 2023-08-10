@@ -46,16 +46,13 @@
                         <td>{{ ($cliente->nacionalidad == null)? "--":$cliente->nacionalidad }}</td>
 
                         <td class="d-flex justify-content-center">
-                            <form action="{{route('cliente.destroy', $cliente)}}" method="post">
-                                @csrf
-                                @method('delete')
+
+
                                  <a class="btn btn-primary btn-sm" href="{{route('cliente.show',$cliente)}}">Ver</a>
 
                                   <a href="{{route('cliente.edit',$cliente)}}" class="btn btn-info btn-sm">Editar</a>
 
-                                  <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
-                                  value="Borrar">Eliminar</button>
-                              </form>
+                             
                         </td>
                     </tr>
                 @endforeach

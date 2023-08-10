@@ -28,7 +28,7 @@
 
                 <div class="form-group col-md-6 my-3">
                     <label for="monto"><b>Monto de la cuota</b></label>
-                    <input name="monto" type="number" step="0.01" max="999999.99" class="form-control" required"
+                    <input name="monto" type="number" step="0.01" max="999999.99" class="form-control" required
                         id="monto">
                     @error('monto')
                         <small>{{ $message }}</small>
@@ -38,7 +38,7 @@
 
                 <div class="form-group col-md-6 my-3">
                     <label for="fecha"><b>Fecha de la cuota</b></label>
-                    <input name="fecha" type="date" class="form-control" required"
+                    <input name="fecha" type="date" class="form-control" required
                         id="fecha">
                     @error('fecha')
                         <small>{{ $message }}</small>
@@ -48,7 +48,7 @@
 
                 <div class="form-group col-md-6 my-3">
                     <label for="cargo_adicional"><b>Cargo Adicional de la cuota</b></label>
-                    <input name="cargo_adicional" type="number" step="0.50" max="99999.50" class="form-control" required"
+                    <input name="cargo_adicional" type="number" step="0.50" max="99999.50" class="form-control" required
                         id="cargo_adicional">
                     @error('cargo_adicional')
                         <small>{{ $message }}</small>
@@ -60,8 +60,8 @@
                     <label for="name"><b>Seleccione un crédito</b></label>
                     <select name="credito_id" class="form-control col-md-6" id="credito_id">
                         @foreach ($creditos as $credito)
-                            @if ($credito->estado == "Aceptado")
-                                <option value="{{$credito->id}}">{{$credito->motivo}} de {{$credito->cliente->nombre}}</option>
+                            @if ($credito->estado == "Aprobado")
+                                <option value="{{$credito->id}}">{{$credito->destino}} de {{$credito->cliente->nombre}}</option>
                             @endif
                         @endforeach
                     </select>

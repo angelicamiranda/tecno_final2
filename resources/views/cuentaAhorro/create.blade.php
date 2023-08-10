@@ -100,5 +100,9 @@
 @stop
 
 @section('js')
-
+<script>
+    $(document).ready(function() {
+        $('#usuarios').DataTable();
+    });
+</script>
 @stop

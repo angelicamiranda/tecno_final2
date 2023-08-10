@@ -7,6 +7,7 @@ use App\Models\Credito;
 use App\Models\Cuota;
 use App\Models\TasaInteres;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Descriptor\JsonDescriptor;
 
 class CreditoController extends Controller
 {
@@ -24,9 +25,8 @@ class CreditoController extends Controller
      */
     public function create()
     {
-        $tasas = TasaInteres::get();
         $clientes = Cliente::get();
-        return view('credito.create',compact('tasas', 'clientes'));
+        return view('credito.create',compact('clientes'));
     }
 
     /**
@@ -36,30 +36,36 @@ class CreditoController extends Controller
     {
         $request->validate([
             'monto' => 'required|numeric|between:50,999999.50',
-            'motivo' => 'required|string|max:50',
-            'plazo' => 'required|numeric|between:1,50',
-            'desembolso' => 'required',
+            'destino' => 'required|string|max:250',
+            'plazo' => 'required|numeric|between:0,50',
             'periodo_gracia' => 'required|string|max:20',
-            'cargo_adicional' => 'required|numeric|between:0.50,99999.50',
+            'cargo_adicional' => 'required|numeric|between:0,99999.50',
         ]);
-        $tasa = TasaInteres::find($request->tasa_interes_id);
+
+
+        $tasaget = TasaInteres::where('descripcion', $request->tipo)->where('tipo', $request->forma_pago)->first();
+
+
+        $tasa = TasaInteres::find($tasaget->id);
         $monto_mensual = round($request->monto / $request->plazo, 2);
         $total_monto_mensual = round(($request->monto * $tasa->porcentaje) + $monto_mensual + $request->cargo_adicional, 2);
         $monto_final = round($total_monto_mensual * $request->plazo, 2);
         $credito=Credito::create([
             'monto' => $request['monto'],
-            'motivo' => $request['motivo'],
+            'destino' => $request['destino'],
             'plazo' => $request['plazo'],
-            'dia_desembolso' => $request['desembolso'],
             'periodo_gracia' => $request['periodo_gracia'],
             'cargo_adicional' => $request['cargo_adicional'],
             'montomensual' => $monto_mensual,
             'totalmontomensual' => $total_monto_mensual,
             'montofinal' => $monto_final,
             'estado' => "Solicitado",
-            'tasa_interes_id' => $request['tasa_interes_id'],
+
             'cliente_id' => $request['cliente_id'],
         ]);
+        $credito->tasa_interes_id = $tasa->id;
+        $credito->tipo = $request->tipo;
+        $credito->forma_pago = $request->forma_pago;
         $credito->save();
 
         return redirect()->route('credito.index');
@@ -71,30 +77,35 @@ class CreditoController extends Controller
     public function show(string $id)
     {
         $credito=Credito::findOrFail($id);
-        return view('credito.show', compact('credito'));
+        $cant = Cuota::where('credito_id', $credito->id)->count('credito_id');
+        $cuotaFaltante = $credito->plazo - $cant;
+        return view('credito.show', compact('cant','credito', 'cuotaFaltante'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Credito $credito)
+    public function edit(string $id)
     {
         $tasas = TasaInteres::get();
         $clientes = Cliente::get();
+        $credito = Credito::findOrFail($id);
         return view('credito.edit',compact('credito', 'tasas', 'clientes'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Credito $credito)
+    public function update(Request $request, string $id)
     {
+        $credito = Credito::findOrFail($id);
         if($credito->monto <> $request->monto){
             $request->validate([
                 'monto' => 'required|numeric|between:50,999999.50',
             ]);
             $credito->monto = $request->monto;
-            $tasa = TasaInteres::find($request->tasa_interes_id);
+            $tasaget = TasaInteres::where('descripcion', $request->tipo)->where('tipo', $request->forma_pago)->first();
+            $tasa = TasaInteres::find($tasaget->id);
             $monto_mensual = round($request->monto / $request->plazo, 2);
             $total_monto_mensual = round(($request->monto * $tasa->porcentaje) + $monto_mensual + $request->cargo_adicional, 2);
             $monto_final = round($total_monto_mensual * $request->plazo, 2);
@@ -104,20 +115,21 @@ class CreditoController extends Controller
             $credito->montofinal = $monto_final;
         }
 
-        if($credito->motivo <> $request->motivo){
+        if($credito->destino <> $request->destino){
             $request->validate([
-                'motivo' => 'required|string|max:50',
+                'destino' => 'required|string|max:100',
             ]);
-            $credito->motivo = $request->motivo;
+            $credito->destino = $request->destino;
         }
 
         if($credito->plazo <> $request->plazo){
             $request->validate([
-                'plazo' => 'required|numeric|between:1,50',
+                'plazo' => 'required|numeric|between:0,50',
             ]);
             $credito->monto = $request->monto;
             $credito->plazo = $request->plazo;
-            $tasa = TasaInteres::find($request->tasa_interes_id);
+            $tasaget = TasaInteres::where('descripcion', $request->tipo)->where('tipo', $request->forma_pago)->first();
+            $tasa = TasaInteres::find($tasaget->id);
             $monto_mensual = round($request->monto / $request->plazo, 2);
             $total_monto_mensual = round(($request->monto * $tasa->porcentaje) + $monto_mensual + $request->cargo_adicional, 2);
             $monto_final = round($total_monto_mensual * $request->plazo, 2);
@@ -143,12 +155,17 @@ class CreditoController extends Controller
 
         if($credito->cargo_adicional <> $request->cargo_adicional){
             $request->validate([
-                'cargo_adicional' => 'required|numeric|between:0.50,99999.50',
+                'cargo_adicional' => 'required|numeric|between:0,99999.50',
             ]);
             $credito->monto = $request->monto;
             $credito->plazo = $request->plazo;
             $credito->cargo_adicional = $request->cargo_adicional;
-            $tasa = TasaInteres::find($request->tasa_interes_id);
+
+            $credito->tipo = $request->tipo;
+            $credito->forma_pago = $request->forma_pago;
+
+            $tasaget = TasaInteres::where('descripcion', $request->tipo)->where('tipo', $request->forma_pago)->first();
+            $tasa = TasaInteres::find($tasaget->id);
             $monto_mensual = round($request->monto / $request->plazo, 2);
             $total_monto_mensual = round(($request->monto * $tasa->porcentaje) + $monto_mensual + $request->cargo_adicional, 2);
             $monto_final = round($total_monto_mensual * $request->plazo, 2);
@@ -163,7 +180,8 @@ class CreditoController extends Controller
             $credito->plazo = $request->plazo;
             $credito->cargo_adicional = $request->cargo_adicional;
             $credito->tasa_interes_id = $request->tasa_interes_id;
-            $tasa = TasaInteres::find($request->tasa_interes_id);
+            $tasaget = TasaInteres::where('descripcion', $request->tipo)->where('tipo', $request->forma_pago)->first();
+            $tasa = TasaInteres::find($tasaget->id);
             $monto_mensual = round($request->monto / $request->plazo, 2);
             $total_monto_mensual = round(($request->monto * $tasa->porcentaje) + $monto_mensual + $request->cargo_adicional, 2);
             $monto_final = round($total_monto_mensual * $request->plazo, 2);
@@ -198,8 +216,10 @@ class CreditoController extends Controller
 
     public function estado(Request $request, Credito $credito)
     {
-       $credito->estado = $request->estado;
-       $credito->save();
+        $credito->dia_desembolso = $request->dia_desembolso;
+        $credito->estado = $request->estado;
+        $credito->save();
+
 
        $creditos =Credito::where('condicion',0)->get();
         return view('credito.index', compact('creditos'));
@@ -211,4 +231,7 @@ class CreditoController extends Controller
         $clientes = Cliente::get();
         return view('credito.estado',compact('credito'));
     }
+
+
+
 }

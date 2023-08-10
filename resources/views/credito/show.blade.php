@@ -3,7 +3,7 @@
 @section('title', 'Ver Crédito')
 
 @section('content_header')
-    <h1>DETALLE DEL CRÉTIDO</h1>
+    <h1>DETALLE DEL CRÉDITO</h1>
 @stop
 
 @section('content')
@@ -33,8 +33,12 @@
                   </td>
                   </tr>
                   <tr>
-                    <th>Motivo del Crédito</th>
-                    <td>{{ $credito->motivo }}</td>
+                    <th>Destino del Crédito</th>
+                    <td>{{ $credito->destino }}</td>
+                  </tr>
+                  <tr>
+                    <th>Cápital del Crédito</th>
+                    <td>{{ $credito->monto }}</td>
                   </tr>
                   <tr>
                     <th>Plazo de Pagos</th>
@@ -42,7 +46,7 @@
                   </tr>
 
 
-                    @if ($credito->estado == 'Aceptado')
+                    @if ($credito->estado == 'Aprobado')
                       <tr>
                             <th>Día de Desembolso</th>
                             <td>{{ $credito->fecha_apertura }}</td>
@@ -79,6 +83,20 @@
                     <th>Monto Final al Pagar</th>
                     <td>
                     {{ $credito->montofinal }} Bs.
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Cuotas Pagadas</th>
+                    <td>
+                    {{ $cant }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Cuotas Faltantes</th>
+                    <td>
+                    {{ $cuotaFaltante }}
                     </td>
                 </tr>
                 </tbody>

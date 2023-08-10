@@ -43,16 +43,13 @@
                   <td>{{$pago->fecha}}</td>
                   <td>{{$pago->usuario->nombre}}</td>
                   <td>
-                     <form action="{{route('pagoServicio.destroy', $pago)}}" method="post">
-                      @csrf
-                      @method('delete')
+
+
                        {{-- <a class="btn btn-primary btn-sm" href="{{route('pagoServicio.show',$pago)}}">Ver</a> --}}
 
-                      <a href="{{route('pagoServicio.edit',$pago)}}" class="btn btn-info btn-sm">Editar</a>
+                      <a href="{{route('pagoServicio.show',$pago->id)}}" class="btn btn-primary btn-sm">Ver</a>
 
-                      <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
-                      value="Borrar">Eliminar</button>
-                    </form>
+
                   </td>
                 </tr>
                @endforeach

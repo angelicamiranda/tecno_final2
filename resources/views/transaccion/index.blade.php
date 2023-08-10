@@ -39,7 +39,7 @@
                 <tr>
                   <td>{{($transaccione->id == null)? "--":$transaccione->id}}</td>
                   <td>{{($transaccione->cuenta_ahorro_id == null)? "--":$transaccione->cuenta_ahorro->cliente->nombre}}</td>
-                  <td>{{($transaccione->cuenta_ahorro_id == null)? "--":$transaccione->cuenta_ahorro->numero_cuenta}}</td>
+                  <td>{{($transaccione->cuenta_ahorro_id == null)? "--":$transaccione->cuenta_ahorro->nro_cuenta}}</td>
                   <td>{{($transaccione->fecha == null)? "--":$transaccione->fecha}}</td>
                   <td>{{($transaccione->tipo_transaccion == null)? "--":$transaccione->tipo_transaccion}}</td>
 

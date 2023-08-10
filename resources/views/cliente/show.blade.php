@@ -118,7 +118,7 @@
                 <tr>
                     <th>Ingreso Promedio Mensual</th>
                     <td>
-                    {{ $cliente->ingreso_prom_mensual}}
+                    {{ $cliente->ingreso_prom_mensual}} Bs.
                     </td>
                 </tr>
                 </tbody>

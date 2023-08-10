@@ -27,7 +27,7 @@
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Cliente</th>
-                <th scope="col">Motivo</th>
+                <th scope="col">Destino</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Acciones</th>
               </tr>
@@ -38,7 +38,7 @@
                 <tr>
                   <td>{{($credito->id == null)? "--":$credito->id}}</td>
                   <td>{{($credito->cliente_id == null)? "--":$credito->cliente->nombre}}</td>
-                  <td>{{($credito->motivo == null)? "--":$credito->motivo}}</td>
+                  <td>{{($credito->destino == null)? "--":$credito->destino}}</td>
                   <td>{{($credito->estado == null)? "--":$credito->estado}}</td>
                   <td>
 

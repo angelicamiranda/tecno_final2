@@ -58,7 +58,8 @@ class PagoServicioController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pago=PagoServicio::findOrFail($id);
+        return view('pagoServicio.show', compact('pago'));
     }
 
     /**
