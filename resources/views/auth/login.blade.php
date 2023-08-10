@@ -1,13 +1,13 @@
 @extends('plantilla.app')
 
 @section('auth')
-    {{--  <div class="container">
+    {{--  <div class="container" >
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Login') }}</div>
 
-                    <div class="card-body">
+                    <div class="card-body">-
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
@@ -77,7 +77,7 @@
             </div>
         </div>
     </div>  --}}
-    <div class="container">
+    <div  >
 
         <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
             <div class="container">
@@ -133,10 +133,34 @@
                                             <label class="form-check-label" for="rememberMe">Recordar</label>
                                         </div>
                                     </div>
+
+                                    <!-- <div class="col-12">
+                                      <button class="btn btn-secondary w-100" onclick="openCamera()">Acceder a la Cámara</button>
+                                    </div> -->
+
                                     <div class="col-12">
                                         <button class="btn btn-primary w-100" style="background-color: #145A32" type="submit">Ingresar</button>
                                     </div>
                                 </form>
+                                <div class="col-12">
+                                        <button class="btn btn-secondary w-100" onclick="openCamera()">Acceder a la Cámara</button>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <video id="cameraPreview" autoplay playsinline></video>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <button class="btn btn-secondary" onclick="capturePhoto()">Capturar Foto</button>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <img id="capturedPhoto" src="" alt="Foto Capturada">
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <button class="btn btn-primary w-100" style="background-color: #145A32" onclick="sendPhotoToAPI()">verificar</button>
+                                </div>
+                                <div id="verificationMessage" class="alert alert-success" style="display: none;">
+                                    ¡Verificación exitosa! La imagen ha sido verificada correctamente.
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -144,4 +168,73 @@
             </div>
         </section>
     </div>
+
+ <!-- Script para abrir la cámara -->
+<!-- Script para abrir la cámara y capturar una foto -->
+<script>
+    let stream;
+    
+    function openCamera() {
+        // Verificar si el navegador admite getUserMedia
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // Solicitar acceso a la cámara
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (s) {
+                    stream = s;
+                    var videoElement = document.getElementById('cameraPreview');
+                    videoElement.srcObject = stream;
+                })
+                .catch(function (error) {
+                    console.error('Error al acceder a la cámara:', error);
+                });
+        } else {
+            console.error('getUserMedia no es compatible con este navegador.');
+        }
+    }
+    
+    function capturePhoto() {
+        if (stream) {
+            var videoElement = document.getElementById('cameraPreview');
+            var canvas = document.createElement('canvas');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+            var imgElement = document.getElementById('capturedPhoto');
+            imgElement.src = canvas.toDataURL('image/png');
+        }
+    }
+    function sendPhotoToAPI() {
+        var imgElement = document.getElementById('capturedPhoto');
+        var base64Data = imgElement.src.split(',')[1];
+        console.log( base64Data);
+         // Obtener el contenido base64
+        // Aquí debes realizar la solicitud a la API utilizando fetch o cualquier otra librería
+        // Ejemplo usando fetch:
+        fetch('https://incidentsapi.site/public/api/mediaInfractor/identifyUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({foto: base64Data })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Aquí puedes manejar la respuesta de la API
+            // Verificar si la imagen ha sido verificada correctamente en la respuesta de la API
+        if (data.verificado === true) {
+            // Mostrar el mensaje de verificación exitosa
+            var verificationMessage = document.getElementById('verificationMessage');
+            verificationMessage.style.display = 'block';
+        } else {
+            // La imagen no fue verificada correctamente
+            console.log('La imagen no fue verificada correctamente.');
+        }
+        })
+        .catch(error => {
+            console.error('Error al enviar la foto a la API:', error);
+            console.log( data);
+        });
+    }
+</script>
+
 @endsection

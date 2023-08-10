@@ -35,6 +35,8 @@ Route::get('/plantilla', function () {
     return view('plantilla.app');
 });
 
+Route::post('/get-recommendations', 'PersonalizeController@getRecommendations');
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('cliente', ClienteController::class)->names('cliente');
 Route::resource('users', UserController::class)->names('users');
