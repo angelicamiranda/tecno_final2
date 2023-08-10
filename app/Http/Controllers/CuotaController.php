@@ -33,32 +33,32 @@ class CuotaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'monto' => 'required|numeric|between:50,999999.50',
+            'capital' => 'required|numeric|between:50,999999.50',
             'fecha' => 'required',
             'cargo_adicional' => 'required|numeric|between:0.50,99999.50'
         ]);
-        $Monto = Cuota::where('credito_id', $request->credito_id)->sum('monto');
+        $Monto = Cuota::where('credito_id', $request->credito_id)->sum('capital');
         $credito = Credito::find($request->credito_id);
-        if($request->monto >= $credito->totalmontomensual){
+        if($request->capital >= $credito->totalmontomensual){
             if($Monto < $credito->montofinal){
-                $totalCuota = round($request->monto + $request->cargo_adicional,2);
+                $totalCuota = round($request->capital + $request->cargo_adicional,2);
                 $cuota = Cuota::create([
-                    'monto' => $request['monto'],
+                    'capital' => $request['capital'],
                     'fecha' => $request['fecha'],
                     'cargo_adicional' => $request['cargo_adicional'],
-                    'total_cuota' => $totalCuota,
+                    'total' => $totalCuota,
                     'credito_id' => $request['credito_id'],
                 ]);
                 $cuota->save();
                 return redirect()->route('cuota.index');
             }else{
                 $creditos = Credito::get();
-                $mensaje = 'Error!. La suma de todas las cuotas de ese crédito es mayor a su total del monto mensual.';
+                $mensaje = 'Error!. La suma de todas las cuotas de ese crédito es mayor a su monto final.';
                 return view('cuota.create',compact('creditos', 'mensaje'));
             }
         }else{
             $creditos = Credito::get();
-            $mensaje = 'Error!. El monto no tiene que ser menor que el monto final del crédito.';
+            $mensaje = 'Error!. El monto no tiene que ser menor que el monto mensual.';
             return view('cuota.create',compact('creditos', 'mensaje'));
         }
 

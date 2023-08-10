@@ -10,10 +10,10 @@ class Cuota extends Model
     use HasFactory;
     protected $table = 'cuota'; //usa el nombre de la base de datos
     protected $fillable = [ //atributos de la tabla
-        'monto',
+        'capital',
         'fecha',
         'cargo_adicional',
-        'total_cuota',
+        'total',
         'condicion',
         'credito_id'
     ];

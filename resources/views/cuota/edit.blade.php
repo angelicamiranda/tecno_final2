@@ -26,10 +26,10 @@
                 @method('PATCH')
 
                 <div class="form-group col-md-6 my-3">
-                    <label for="monto"><b>Monto de la cuota</b></label>
-                    <input name="monto" type="number" step="0.50" max="999999.50" class="form-control" value="{{ old('monto', $cuotum->monto) }}" required
-                        id="monto">
-                    @error('monto')
+                    <label for="capital"><b>Monto de la cuota</b></label>
+                    <input name="capital" type="number" step="0.50" max="999999.50" class="form-control" value="{{ old('capital', $cuotum->capital) }}" required
+                        id="capital">
+                    @error('capital')
                         <small>{{ $message }}</small>
                         <br><br>
                     @enderror
@@ -37,7 +37,7 @@
 
                 <div class="form-group col-md-6 my-3">
                     <label for="fecha"><b>Fecha del cuota</b></label>
-                    <input name="fecha" type="date" class="form-control" value="{{ old('fecha', $cuotum->fecha) }}" required"
+                    <input name="fecha" type="date" class="form-control" value="{{ old('fecha', $cuotum->fecha) }}" required
                         id="fecha">
                     @error('fecha')
                         <small>{{ $message }}</small>
@@ -47,7 +47,7 @@
 
                 <div class="form-group col-md-6 my-3">
                     <label for="cargo_adicional"><b>Cargo Adicional del crédito</b></label>
-                    <input name="cargo_adicional" type="number" step="0.50" max="99999.50" class="form-control" value="{{ old('cargo_adicional', $cuotum->cargo_adicional) }}" required"
+                    <input name="cargo_adicional" type="number" step="0.50" max="99999.50" class="form-control" value="{{ old('cargo_adicional', $cuotum->cargo_adicional) }}" required
                         id="cargo_adicional">
                     @error('cargo_adicional')
                         <small>{{ $message }}</small>

@@ -27,10 +27,10 @@
                 @csrf
 
                 <div class="form-group col-md-6 my-3">
-                    <label for="monto"><b>Monto de la cuota</b></label>
-                    <input name="monto" type="number" step="0.01" max="999999.99" class="form-control" required
-                        id="monto">
-                    @error('monto')
+                    <label for="capital"><b>Capital de la cuota</b></label>
+                    <input name="capital" type="number" step="0.01" max="999999.99" class="form-control" required
+                        id="capital">
+                    @error('capital')
                         <small>{{ $message }}</small>
                         <br><br>
                     @enderror

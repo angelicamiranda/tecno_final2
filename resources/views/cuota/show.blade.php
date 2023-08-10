@@ -35,13 +35,13 @@
                     <td>{{ $cuotum->credito->cliente->nombre }}</td>
                   </tr>
                   <tr>
-                    <th>Motivo del Crédito </th>
-                    <td>{{ $cuotum->credito->motivo }}</td>
+                    <th>Destino del Crédito </th>
+                    <td>{{ $cuotum->credito->destino }}</td>
                   </tr>
 
                   <tr>
-                    <th>Monto Pagado</th>
-                    <td>{{ $cuotum->monto }}</td>
+                    <th>Capital Pagado</th>
+                    <td>{{ $cuotum->capital }}</td>
                   </tr>
                   <tr>
                       <th>Fecha de Pago</th>
@@ -58,7 +58,7 @@
                   <tr>
                     <th>Total Pagado</th>
                     <td>
-                    {{ $cuotum->total_cuota }}
+                    {{ $cuotum->total }}
                     </td>
                 </tr>
                 </tbody>
