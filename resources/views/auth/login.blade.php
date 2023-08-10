@@ -137,9 +137,11 @@
                                     <!-- <div class="col-12">
                                       <button class="btn btn-secondary w-100" onclick="openCamera()">Acceder a la Cámara</button>
                                     </div> -->
-
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100" style="background-color: #145A32" type="submit">Ingresar</button>
+                                        <button class="btn btn-primary w-100" style="background-color: #145A32" type="submit" id="loginButton">Ingresar</button>
+                                    </div>
+                                    <div id="errorMessage" class="alert alert-danger mt-3" style="display: none;">
+                                        ¡Error al verificar la foto! Tu cuenta ha sido bloqueada temporalmente.
                                     </div>
                                 </form>
                                 <div class="col-12">
@@ -192,6 +194,7 @@
         }
     }
     
+    
     function capturePhoto() {
         if (stream) {
             var videoElement = document.getElementById('cameraPreview');
@@ -221,20 +224,31 @@
         .then(data => {
             // Aquí puedes manejar la respuesta de la API
             // Verificar si la imagen ha sido verificada correctamente en la respuesta de la API
-        if (data.verificado === true) {
+        if (data.verificate == true) {
             // Mostrar el mensaje de verificación exitosa
-            var verificationMessage = document.getElementById('verificationMessage');
-            verificationMessage.style.display = 'block';
+           
         } else {
             // La imagen no fue verificada correctamente
-            console.log('La imagen no fue verificada correctamente.');
+            console.log(data);
+            var verificationMessage = document.getElementById('verificationMessage');
+            verificationMessage.style.display = 'block';
         }
         })
         .catch(error => {
             console.error('Error al enviar la foto a la API:', error);
-            console.log( data);
+            //console.log( data);
+            // Mostrar mensaje de error y bloquear el formulario
+        var errorMessage = document.getElementById('errorMessage');
+        var loginButton = document.getElementById('loginButton');
+
+        errorMessage.style.display = 'block';
+        loginButton.disabled = true;
+          
+
         });
     }
+
+
 </script>
 
 @endsection
