@@ -26,7 +26,7 @@
 
                 <div class="form-group col-md-6 my-3">
                     <label for="monto"><b>Monto del crédito</b></label>
-                    <input name="monto" type="number" step="0.50" max="999999.50" class="form-control" required"
+                    <input name="monto" type="number" step="0.50" max="999999.50" class="form-control" required
                         id="monto">
                     @error('monto')
                         <small>{{ $message }}</small>
@@ -35,18 +35,18 @@
                 </div>
 
                 <div class="form-group col-md-6 my-3">
-                    <label for="motivo"><b>Motivo del crédito</b></label>
-                    <input name="motivo" type="text" class="form-control" required"
-                        id="motivo">
-                    @error('motivo')
+                    <label for="destino"><b>Destino del crédito</b></label>
+                    <input name="destino" type="text" class="form-control" required
+                        id="destino">
+                    @error('destino')
                         <small>{{ $message }}</small>
                         <br><br>
                     @enderror
                 </div>
 
                 <div class="form-group col-md-6 my-3">
-                    <label for="plazo"><b>Plazo del crédito en meses</b></label>
-                    <input name="plazo" type="number" step="1" max="50" class="form-control" required"
+                    <label for="plazo"><b>Plazo del crédito</b></label>
+                    <input name="plazo" type="number" step="1" max="50" class="form-control" required
                         id="plazo">
                     @error('plazo')
                         <small>{{ $message }}</small>
@@ -54,19 +54,10 @@
                     @enderror
                 </div>
 
-                <div class="form-group col-md-6 my-3">
-                    <label for="desembolso"><b>Desembolso del crédito</b></label>
-                    <input name="desembolso" type="date" class="form-control" required"
-                        id="desembolso">
-                    @error('desembolso')
-                        <small>{{ $message }}</small>
-                        <br><br>
-                    @enderror
-                </div>
 
                 <div class="form-group col-md-6 my-3">
                     <label for="periodo_gracia"><b>Periodo de Gracia del crédito</b></label>
-                    <input name="periodo_gracia" type="text" class="form-control" required"
+                    <input name="periodo_gracia" type="text" class="form-control" required
                         id="periodo_gracia">
                     @error('periodo_gracia')
                         <small>{{ $message }}</small>
@@ -76,7 +67,7 @@
 
                 <div class="form-group col-md-6 my-3">
                     <label for="cargo_adicional"><b>Cargo Adicional del crédito</b></label>
-                    <input name="cargo_adicional" type="number" step="0.50" max="99999.50" class="form-control" required"
+                    <input name="cargo_adicional" type="number" step="0.50" max="99999.50" class="form-control" required
                         id="cargo_adicional">
                     @error('cargo_adicional')
                         <small>{{ $message }}</small>
@@ -85,13 +76,31 @@
                 </div>
 
                 <div class="form-group col-md-6 my-3">
-                    <label for="name"><b>Seleccione una Tasa de Interés</b></label>
-                    <select name="tasa_interes_id" class="form-control col-md-6" id="tasa_interes_id">
-                        @foreach ($tasas as $tasa)
-                            <option value="{{$tasa->id}}">{{$tasa->descripcion}} - {{$tasa->porcentaje}}</option>
-                    @endforeach
+                    <label for="name"><b>Seleccione un Tipo de Crédito</b></label>
+                    <select name="tipo_credito" class="form-control col-md-6" id="tasa_interes_id">
+
+                            <option value="Banca Comunal">Banca Comunal</option>
+                            <option value="Salud">Salud</option>
+                            <option value="Educativo">Educativo</option>
+                            <option value="Agropecuario">Agropecuario</option>
+                            <option value="Agropecuario">Agropecuario</option>
+                            <option value="Comercial">Comercial</option>
+                            <option value="Consumo">Consumo</option>
+                            <option value="Vivienda">Vivienda</option>
                     </select>
                 </div>
+                <div class="form-group col-md-6 my-3">
+                    <label for="name"><b>Seleccione una Forma de Pago</b></label>
+                    <select name="forma_pago" class="form-control col-md-6" id="tasa_interes_id">
+                            <option value="Mensual">Mensual</option>
+                            <option value="Bimensual">Bimensual</option>
+                            <option value="Trimestral">Trimestral</option>
+                            <option value="Semestral">Semestral</option>
+                            <option value="Anual">Anual</option>
+
+                    </select>
+                </div>
+                
 
                 <div class="form-group col-md-6 my-3">
                     <label for="name"><b>Seleccione un Cliente</b></label>

@@ -14,9 +14,9 @@
                     <div class="card-header">{{ __('Registrar') }}</div>
 
                     <div class="card-body">
-                        <form method="PUT" action="{{ route('cuentaAhorro.update', $cuenta->id) }}">
+                        <form method="POST" action="{{ route('cuentaAhorro.update', $cuenta->id) }}">
                             @csrf
-
+                            @method('PATCH')
 
 
                             <div class="form-group row my-3">

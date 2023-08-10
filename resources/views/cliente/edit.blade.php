@@ -21,8 +21,9 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="PUT" action="{{ route('cliente.update', $cliente->id) }}">
+            <form method="POST" action="{{ route('cliente.update', $cliente->id) }}">
                 @csrf
+                @method('PATCH')
 
                 <div class="form-group col-md-6 my-3">
                     <label for="nombre"><b>Nombre Completo</b></label>
