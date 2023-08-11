@@ -71,7 +71,7 @@
                                 <div class="col-md-6">
                                     <select name="cliente_id" class="form-control" id="cliente_id" >
                                             @foreach ($clientes as $cliente)
-                                                <option value="{{ $cliente->id }}">{{ str_pad($cliente->id, 4, '0', STR_PAD_LEFT) }}</option>
+                                                <option value="{{ $cliente->id }}">{{ str_pad($cliente->id, 4, '0', STR_PAD_LEFT)   }} - {{$cliente->nombre}} </option>
                                             @endforeach
                                     </select>
                                 </div>

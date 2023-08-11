@@ -26,7 +26,7 @@
                                 <div class="col-md-6">
                                     <select name="cuenta_ahorro_id" class="form-control" id="cuenta_ahorro_id" >
                                             @foreach ($cuentas as $cuenta)
-                                                <option value="{{ $cuenta->id }}"> {{$cuenta->numero_cuenta}} - {{$cuenta->cliente->nombre}}</option>
+                                                <option value="{{ $cuenta->id }}"> {{$cuenta->nro_cuenta}} - {{$cuenta->cliente->nombre}} - {{$cuenta->tipo_moneda}}</option>
                                             @endforeach
                                     </select>
                                 </div>
