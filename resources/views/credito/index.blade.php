@@ -47,7 +47,10 @@
                       <a href="{{route('credito.edit',$credito)}}" class="btn btn-info btn-sm">Editar</a>
                       @endif
                       @if (Auth::user()->rol_id == 1)
-                      <a href="{{route('credito.estadoview',$credito)}}" class="btn btn-info btn-sm">Editar Estado</a>
+                        @if ($credito->estado == 'Solicitado')
+                        <a href="{{route('credito.estadoview',$credito)}}" class="btn btn-info btn-sm">Editar Estado</a>
+                        @endif
+
                       @endif
 
 
