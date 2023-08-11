@@ -41,15 +41,11 @@
                         <td>{{ ($tasa->descripcion == null)? "--":$tasa->descripcion }}</td>
                         <td>{{($tasa->porcentaje == null)? "--": $tasa->porcentaje }}</td>
                         <td>
-                            <form action="{{route('tasaInteres.destroy', $tasa)}}" method="post">
-                              @csrf
-                              @method('delete')
-                              {{-- <a class="btn btn-primary btn-sm" href="{{route('tasaInteres.show',$user)}}">Ver</a> --}}
+
+
 
                                 <a href="{{route('tasaInteres.edit',$tasa)}}" class="btn btn-info btn-sm">Editar</a>
 
-                                <button class="btn btn-danger btn-sm" onclick="return confirm('¿ESTA SEGURO DE  BORRAR?')"
-                                value="Borrar">Eliminar</button>
                             </form>
                         </td>
                     </tr>

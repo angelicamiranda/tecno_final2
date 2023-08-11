@@ -36,6 +36,8 @@ Route::get('/plantilla', function () {
 });
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/fecha', [App\Http\Controllers\HomeController::class, 'fechaIndex'])->name('fecha');
+Route::post('/fecha', [App\Http\Controllers\HomeController::class, 'store'])->name('store');
 Route::resource('cliente', ClienteController::class)->names('cliente');
 Route::resource('users', UserController::class)->names('users');
 Route::resource('servicio', ServicioController::class)->names('servicio');

@@ -61,6 +61,7 @@
                     <select name="credito_id" class="form-control col-md-6" id="credito_id">
                         @foreach ($creditos as $credito)
                             @if ($credito->estado == "Aprobado")
+                            
                                 <option value="{{$credito->id}}">{{$credito->destino}} de {{$credito->cliente->nombre}}</option>
                             @endif
                         @endforeach

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class ClienteController extends Controller
 {
     /**
@@ -12,7 +12,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::all();
+        $clientes = Cliente::where('usuario_id', Auth::user()->id)->get();
         return view('cliente.index', compact('clientes'));
     }
 
@@ -30,6 +30,13 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'correo' => 'required|email',
+            'ci' => 'required',
+            'fecha_nac' => 'required|date',
+            'ingreso_prom_mensual' => 'required|between:0,50000'
+
+        ]);
         $cliente=Cliente::create([
             'correo' => $request['correo'],
             'ci' => $request['ci'],
@@ -76,6 +83,13 @@ class ClienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'correo' => 'required|email',
+            'ci' => 'required',
+            'fecha_nac' => 'required|date',
+            'ingreso_prom_mensual' => 'required|between:0,50000'
+
+        ]);
         $cliente = Cliente::findOrFail($id);
         $cliente->ci = $request->ci;
         $cliente->correo = $request->correo;

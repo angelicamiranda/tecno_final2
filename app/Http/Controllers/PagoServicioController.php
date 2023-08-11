@@ -6,6 +6,7 @@ use App\Models\PagoServicio;
 use App\Models\Servicio;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PagoServicioController extends Controller
 {
@@ -14,7 +15,8 @@ class PagoServicioController extends Controller
      */
     public function index()
     {
-        $pagos = PagoServicio::all();
+
+        $pagos = PagoServicio::where('usuario_id', Auth::user()->id)->get();
         return view('pagoServicio.index', compact('pagos'));
     }
 

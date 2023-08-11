@@ -50,4 +50,40 @@ class HomeController extends Controller
         $totalSer = $servicios->sum('cantidad');
         return view('home',compact('transacciones','total', 'totalSer', 'servicios', 'paginass','totaless'));
     }
+
+    public function fechaIndex()
+    {
+
+        return view('fecha');
+    }
+
+
+    public function store(Request $request){
+
+        $paginass=Pagina::all();
+        $totaless=$paginass->sum('visitas');
+
+        $fechaIni = $request->fechaInicial;
+
+        $fechafin = $request->fechaFinal;
+
+        $transacciones=DB::table('transaccion')
+        ->select('transaccion.tipo_transaccion', DB::raw('COUNT(transaccion.tipo_transaccion) as cantidad'))
+        ->where('fecha', '>=', $request->fechaInicial)
+        ->where('fecha', '<=', $request->fechaFinal)
+        ->groupBy('transaccion.tipo_transaccion')
+        ->get();
+        $total=$transacciones->sum('cantidad');
+        $pagoServicios=PagoServicio::all();
+        $servicios = DB::table('pago_servicio')
+                ->join('servicio', 'pago_servicio.servicio_id', '=', 'servicio.id')
+                ->select('servicio.nombre', DB::raw('COUNT(servicio.nombre) as cantidad'))
+                ->where('fecha', '>=', $fechaIni)
+                ->where('fecha', '<=', $fechafin)
+                ->groupBy('servicio.nombre')
+                ->get();
+
+        $totalSer = $servicios->sum('cantidad');
+        return view('home',compact('transacciones','total', 'totalSer', 'servicios', 'paginass','totaless'));
+    }
 }

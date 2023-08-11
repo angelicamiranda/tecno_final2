@@ -14,6 +14,10 @@
 
             </div>
 
+
+
+
+
             <div class="card-body">
                 <div class="d-flex justify-content-center">
                     <div id="servicios" style="width: 500px; height: auto;">
@@ -51,6 +55,7 @@
                 <h5><b>Visitas totales: {{$totaless}}</b></h5>
             </div>
         </div>
+
 
 
     </div>

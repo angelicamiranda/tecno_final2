@@ -8,6 +8,7 @@
                 <span>Home</span>
             </a>
         </li>
+ 
         <li class="nav-heading">Páginas</li>
 
 
@@ -91,7 +92,7 @@
                     <i class="bi bi-menu-button-wide"></i><span>Servicios Básicos</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav3" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-{{--  
+{{--
                      <li class="nav-item">
                         <a class="nav-link collapsed" href="{{route('servicio.index')}}">
                             <i class="bi bi-person"></i>

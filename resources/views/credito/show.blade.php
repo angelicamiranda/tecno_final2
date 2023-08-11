@@ -102,9 +102,12 @@
                 </tbody>
               </table>
 
-              @if ($credito->estado == 'Aceptado')
-              <a href="{{route('credito.cuotas',$credito)}}" class="btn btn-info btn-sm">Ver Cuotas</a>
 
+              @if ($cant < $cuotaFaltante)
+                    @if ($credito->estado == 'Aceptado')
+                    <a href="{{route('credito.cuotas',$credito)}}" class="btn btn-info btn-sm">Ver Cuotas</a>
+
+                    @endif
               @endif
 
 
