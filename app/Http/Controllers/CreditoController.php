@@ -175,13 +175,15 @@ class CreditoController extends Controller
             $credito->montofinal = $monto_final;
         }
 
-        if($credito->tasa_interes_id <> $request->tasa_interes_id){
+        if($credito->tipo <> $request->tipo || $credito->forma_pago <> $request->forma_pago){
             $credito->monto = $request->monto;
             $credito->plazo = $request->plazo;
             $credito->cargo_adicional = $request->cargo_adicional;
-            $credito->tasa_interes_id = $request->tasa_interes_id;
+            $credito->tipo = $request->tipo;
+            $credito->forma_pago = $request->forma_pago;
             $tasaget = TasaInteres::where('descripcion', $request->tipo)->where('tipo', $request->forma_pago)->first();
             $tasa = TasaInteres::find($tasaget->id);
+            $credito->tasa_interes_id = $tasa->id;
             $monto_mensual = round($request->monto / $request->plazo, 2);
             $total_monto_mensual = round(($request->monto * $tasa->porcentaje) + $monto_mensual + $request->cargo_adicional, 2);
             $monto_final = round($total_monto_mensual * $request->plazo, 2);

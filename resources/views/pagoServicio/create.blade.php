@@ -54,18 +54,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group row my-3">
-                    <label for="usuario_id"><b>Seleccione el Empleado</b></label>
-                    <div class="col-md-6">
-                        <select name="usuario_id" class="form-control" id="usuario_id" >
-                                @foreach ($users as $user)
-                                    <option value="{{ $user->id }}"> {{$user->nombre}}</option>
-                                @endforeach
-                        </select>
-                    </div>
-
-                </div>
-
+                <input type="hidden" name="usuario_id" id="usuario_id" value={{Auth::user()->id}}>
                 <div class="form-group row my-3">
                     <label for="servicio_id"><b>Seleccione el Servicio</b></label>
                     <div class="col-md-6">
